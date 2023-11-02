@@ -1,5 +1,5 @@
 # .github/workflows/main.yml
-on: [push, pull_request]
+on: [push]
 
 jobs:
   norminette_job:
