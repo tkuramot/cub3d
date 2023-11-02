@@ -40,6 +40,10 @@ re: fclean all
 debug:
 	make DEBUG=1
 
+submodule:
+	git submodule init
+	git submodule update
+
 cfile:
 	find . -name "*.c" -not -path "./lib/*" | sed 's/\.\///g' | tr '\n' ' '
 
