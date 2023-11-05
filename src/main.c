@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "mlx.h"
 #include <unistd.h>
 
 int	main(void)
