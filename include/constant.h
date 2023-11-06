@@ -10,11 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "mlx.h"
-#include <unistd.h>
+#ifndef CONSTANT_H
+# define CONSTANT_H
 
-int	main(void)
+# define WINDOW_WIDTH 640
+# define WINDOW_HEIGHT 360
+
+typedef enum e_direction
 {
-	write(1, "hi\n", 3);
-}
+	NORTH,
+	SOUTH,
+	WEST,
+	EAST,
+	INIT
+}		t_direction;
+
+#endif

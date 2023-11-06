@@ -1,2 +1,6 @@
 -I./lib/libft/include
+-I./lib/minilibx-linux
 -I./include
+-Wall
+-Werror
+-Wextra

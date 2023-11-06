@@ -1,8 +1,8 @@
 CFLAGS  = -g -MMD -MP -Wall -Wextra -Werror
 DFLAGS = -fsanitize=address -fsanitize=undefined -fsanitize=bounds
 LDFLAGS =
-LIBS    = lib/libft/libft.a
-INCLUDE = -I./include -I./lib/libft/include
+LIBS    = lib/libft/libft.a lib/minilibx-linux/libmlx_Darwin.a
+INCLUDE = -I./include -I./lib/libft/include -I./lib/minilibx-linux
 NAME    = cub3D
 SRCDIR  = src
 SRCS    = src/main.c
@@ -22,10 +22,12 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 
 $(LIBS):
 	$(MAKE) -C ./lib/libft
+	$(MAKE) -C ./lib/minilibx-linux
 
 .PHONY: clean
 clean:
 	make -C ./lib/libft clean
+	$(MAKE) -C ./lib/minilibx-linux clean
 	$(RM) -r $(OBJDIR)
 
 .PHONY: fclean
