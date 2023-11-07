@@ -1,102 +1,63 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_config.c                                       :+:      :+:    :+:   */
+/*   set_map_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: tokazaki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 23:53:38 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/02 23:53:57 by tkuramot         ###   ########.fr       */
+/*   Created: 2023/11/07 17:08:38 by tokazaki          #+#    #+#             */
+/*   Updated: 2023/11/07 18:37:36 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-void	get_config(char *argv[], t_world *world)
+void	set_map_data(int fd, t_world *world)
 {
-	int	open_fd;
+	t_list	*lst;
 
-	open_fd = open(argv[1]);
-	if (fd < 0)
-		error_exit_msg("Please enter the correct file");
-	set_texture_data(fd, world);
-	set_color_data(fd, world);
-	set_map_data(fd, world);
+	read_map(fd, world, &lst);
+	arrange_map(world, lst);
 }
 
-int	check_direction(char *line)
-{
-	int	direction;
-
-	direction = INIT;
-	if (strncmp("NO ", line, 3))
-		direction = NO;
-	if (strncmp("SO ", line, 3))
-		direction = SO;
-	if (strncmp("WE ", line, 3))
-		direction = WE;
-	if (strncmp("WA ", line, 3))
-		direction = WA;
-	return (direction);
-}
-
-void	set_texture(int fd, t_world world)
-{
-	char 	*line;
-	char 	*texture_path;
-	int	i;
-
-	i = 0;
-	while (i < 4)
-	{
-		line = read_file(fd);
-		if (check_direction(line) != 0)
-		{
-			texture_file = check_texture_file(line);
-			set_texture_to_world(line, texture_path);
-		}
-		else
-			error_exit_msg("Please 正しい方角のテクスチャ入れてね");
-		free(line);
-		i++;
-	}
-}
-
-bool	check_line()
-{
-
-}
-
-char	*check_texture_file(char *line)
-{
-	int	fd;
-	int	direction;
-
-	direction = check_direction(line);
-	lineeeeee = line[3];
-	while (*line == ft_isspace)
-		line++;
-	if (*line == '\0')
-		error_exit_msg("Please テクスチャ入れてね");
-	if (check_line(line))
-		error_exit_msg("Please テクスチャ一つだけ入れてね");
-	while (line[i] != ft_isspace(line[i]) && line[i] != '\0')
-		i++;
-}
-
-//改行だけの行は飛ばして、情報の入っている行だけ返すGNL
-char	*read_file(int fd)
+//読み込みをして、線形リストにする
+void	read_map(int fd, t_world *world, t_list **lst)
 {
 	char	*line;
 
-	while (1)
+	lst = NULL;
+	line = read_file(fd);
+	if (line == NULL)
+		error_exit_msg("mapがないよ");
+	while (line != NULL)
 	{
+		del_newline_cord(line);
+		ft_lst_push_back(lst, line);
 		line = get_next_line(fd);
-		if (line == NULL)
-			return (NULL);
-		if (line[0] != '\n')
-			break ;
-		free(line);
+		if (errno != 0)
+			error_exit_msg("mallocに失敗してたお");
 	}
-	return (line);
+}
+
+void	*ft_lst_push_back(t_list **lst, char *line)
+{
+	if (*lst == NULL)
+		*lst = ft_lstnew(line);
+	else
+		ft_lstadd_back(lst, ft_lstnew(line));
+}
+
+//mapの整形をする
+void	arrange_map(t_world *world, t_list *lst)
+{
+	int	max_len;
+
+	max_len = 0;
+	while (lst != NULL)
+	{
+		if (max_len < ft_strlen(lst->content))
+			max_len = ft_strlen(lst->content);
+		lst = lst->next;
+	}
+	world->map = (char **) malloc (sizeof(char *) * (max_len + 1));
 }
