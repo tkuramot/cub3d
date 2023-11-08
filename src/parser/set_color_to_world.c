@@ -27,7 +27,6 @@ void	set_color_to_world(char	*line, t_world *world)
 	color = 0;
 	ceiling_or_floor = check_floor_or_ceiling(line);
 	line = skip_space(&line[2]);
-	ft_dprintf(1, "[%s]\n", line);
 	while (line != NULL)
 	{
 		mono_color = ft_atoi(line);
@@ -46,6 +45,7 @@ void	set_color_to_world(char	*line, t_world *world)
 	else
 		error_exit_msg("同じ天井・地面の色が複数回指定されているよ");
 }
+//	ft_dprintf(1, "[%s]\n", line);
 
 int	create_trgb(int mono_color)
 {

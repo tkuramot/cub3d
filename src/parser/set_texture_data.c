@@ -22,7 +22,6 @@ void	set_texture(int fd, t_world *world)
 	char	*texture_path;
 
 	i = 0;
-	ft_dprintf(1, "-----set_texture-----\n");
 	while (i < 4)
 	{
 		line = read_file(fd);
@@ -34,6 +33,7 @@ void	set_texture(int fd, t_world *world)
 		i++;
 	}
 }
+//	ft_dprintf(1, "-----set_texture-----\n");
 
 void	set_texture_to_world(char *line, t_world *world)
 {
@@ -41,7 +41,6 @@ void	set_texture_to_world(char *line, t_world *world)
 	int		direction;
 
 	direction = check_direction(line);
-	ft_dprintf(1, "[%d : %s]\n", direction, line);
 	line = skip_space(&line[2]);
 	if (direction == NORTH && world->texture.north_texture == NULL)
 		world->texture.north_texture = ft_strdup(line);
@@ -54,6 +53,7 @@ void	set_texture_to_world(char *line, t_world *world)
 	else
 		error_exit_msg("Please 正しい方角のテクスチャ入れてね");
 }
+//	ft_dprintf(1, "[%d : %s]\n", direction, line);
 
 //char	*check_texture_file(char *line)
 //{

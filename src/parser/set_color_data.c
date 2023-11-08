@@ -23,7 +23,6 @@ void	set_color(int fd, t_world *world)
 	int		i;
 	char	*line;
 
-	ft_dprintf(1, "-----set_color-----\n");
 	i = 0;
 	while (i < 2)
 	{
@@ -34,9 +33,8 @@ void	set_color(int fd, t_world *world)
 		free(line);
 		i++;
 	}
-	ft_dprintf(1, "[f:%x]\n", world->floor_color);
-	ft_dprintf(1, "[c:%x]\n", world->ceiling_color);
 }
+//	ft_dprintf(1, "-----set_color-----\n");
 
 void	check_color(char *line)
 {

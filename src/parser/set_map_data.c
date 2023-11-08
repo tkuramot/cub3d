@@ -22,11 +22,11 @@ void	set_map(int fd, t_world *world)
 {
 	t_list	*lst;
 
-	ft_dprintf(1, "-----set_map-----\n");
 	read_map(fd, world, &lst);
-	ft_lstiter(lst, print_list);
 	arrange_map(world, lst);
 }
+//	ft_dprintf(1, "-----set_map-----\n");
+//	ft_lstiter(lst, print_list);
 
 void	print_list(void *line)
 {
@@ -56,37 +56,4 @@ void	read_map(int fd, t_world *world, t_list **lst)
 		del_newline_cord(line);
 		ft_lstadd_back(lst, ft_lstnew(line));
 	}
-}
-
-//mapの整形をする
-void	arrange_map(t_world *world, t_list *lst)
-{
-	int	max_len;
-	int	lst_size;
-	int	i;
-
-	i = 0;
-	lst_size = ft_lstsize(lst);
-	max_len = count_max_len(lst);
-	ft_dprintf(1, "max_len %d : size %d\n", max_len, lst_size);
-	world->map = (char **) malloc (sizeof(char *) * (max_len + 1));
-	world->map[max_len] = NULL;
-	while (world->map[i] != NULL)
-	{
-		i++;
-	}
-}
-
-int	count_max_len(t_list *lst)
-{
-	int	max_len;
-
-	max_len = 0;
-	while (lst != NULL)
-	{
-		if (max_len < ft_strlen(lst->content))
-			max_len = ft_strlen(lst->content);
-		lst = lst->next;
-	}
-	return (max_len);
 }

@@ -12,6 +12,8 @@
 
 #include "parser.h"
 
+void	print_world(t_world *world);
+
 void	get_config(char *argv[], t_world *world)
 {
 	int	open_fd;
@@ -22,6 +24,28 @@ void	get_config(char *argv[], t_world *world)
 	set_texture(open_fd, world);
 	set_color(open_fd, world);
 	set_map(open_fd, world);
+	print_world(world);
+}
+
+void	print_world(t_world *world)
+{
+	int	i;
+
+	ft_dprintf(1, "----- texture -----\n");
+	ft_dprintf(1, "%s\n", world->texture.north_texture);
+	ft_dprintf(1, "%s\n", world->texture.south_texture);
+	ft_dprintf(1, "%s\n", world->texture.west_texture);
+	ft_dprintf(1, "%s\n", world->texture.east_texture);
+	ft_dprintf(1, "\n----- color -----\n");
+	ft_dprintf(1, "[Floor: %x]\n", world->floor_color);
+	ft_dprintf(1, "[Ceiling: %x]\n", world->ceiling_color);
+	ft_dprintf(1, "\n----- map -----\n");
+	i = 0;
+	while (world->map[i][0] != '\0')
+	{
+		ft_dprintf(1, "|%s|\n", world->map[i]);
+		i++;
+	}
 }
 
 int	main(int argc, char *argv[])
