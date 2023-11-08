@@ -12,6 +12,9 @@
 
 #include "parser.h"
 
+int		check_direction(char *line);
+void	set_texture_to_world(char *line, t_world *world);
+
 void	set_texture(int fd, t_world *world)
 {
 	int		i;
@@ -19,9 +22,13 @@ void	set_texture(int fd, t_world *world)
 	char	*texture_path;
 
 	i = 0;
+	ft_dprintf(1, "[NO:%d SO:%d WE:%d EA:%d INIT:%d]\n", NORTH, SOUTH,WEST,EAST, INIT);
 	while (i < 4)
 	{
 		line = read_file(fd);
+		if (line == NULL)
+			error_exit_msg("方角のtextureが不足しています");
+		del_newline_cord(line);
 		set_texture_to_world(line, world);
 		free(line);
 		i++;
@@ -30,19 +37,20 @@ void	set_texture(int fd, t_world *world)
 
 void	set_texture_to_world(char *line, t_world *world)
 {
-	char		*texture_path;
-	int			direction;
+	char	*texture_path;
+	int		direction;
 
 	direction = check_direction(line);
+	ft_dprintf(1, "[%d : %s]\n", direction, line);
 	line = skip_space(&line[2]);
-	if (direction == NORTH && world->north_texture == NULL)
-		world->north_texture = ft_strdup(line);
-	else if (direction == SOUTH && world->south_texture == NULL)
-		world->south_texture = ft_strdup(line);
-	else if (direction == WEST && world->ewst_texture == NULL)
-		world->west_texture = ft_strdup(line);
-	else if (direction == EAST && world->east_texture == NULL)
-		world->east_texture = ft_strdup(line);
+	if (direction == NORTH && world->texture.north_texture == NULL)
+		world->texture.north_texture = ft_strdup(line);
+	else if (direction == SOUTH && world->texture.south_texture == NULL)
+		world->texture.south_texture = ft_strdup(line);
+	else if (direction == WEST && world->texture.west_texture == NULL)
+		world->texture.west_texture = ft_strdup(line);
+	else if (direction == EAST && world->texture.east_texture == NULL)
+		world->texture.east_texture = ft_strdup(line);
 	else
 		error_exit_msg("Please 正しい方角のテクスチャ入れてね");
 }
@@ -66,16 +74,14 @@ void	set_texture_to_world(char *line, t_world *world)
 //
 int	check_direction(char *line)
 {
-	int	direction;
-
-	direction = INIT;
-	if (strncmp("NO ", line, 3))
-		direction = NORTH;
-	if (strncmp("SO ", line, 3))
-		direction = SOUTH;
-	if (strncmp("WE ", line, 3))
-		direction = WEST;
-	if (strncmp("EA ", line, 3))
-		direction = EAST;
-	return (direction);
+	if (ft_strncmp("NO ", line, 3) == 0)
+		return (NORTH);
+	else if (ft_strncmp("SO ", line, 3) == 0)
+		return (SOUTH);
+	else if (ft_strncmp("WE ", line, 3) == 0)
+		return (WEST);
+	else if (ft_strncmp("EA ", line, 3) == 0)
+		return (EAST);
+	else
+		return (INIT);
 }

@@ -12,29 +12,29 @@
 
 #include "parser.h"
 
-void	set_color_data(fd, world)
+void	check_color(char *line);
+char	*check_mono_color_data(char *line);
+int		check_floor_or_ceiling(char *line);
+void	set_color_to_world(char	*line, t_world *world);
+
+void	set_color(int fd, t_world *world)
 {
+	ft_dprintf(1, "[set_color]\n");
 	int		i;
 	char	*line;
-	char	*texture_path;
 
 	i = 0;
 	while (i < 2)
 	{
 		line = read_file(fd);
-		if (check_floor_or_ceiling(line) != INIT)
-		{
-			check_color_data(line);
-			set_color_to_world(line, world);
-		}
-		else
-			error_exit_msg("Please 色の頭文字で、データを入れてね");
-		free(line);
+		del_newline_cord(line);
+		ft_dprintf(1, "[%s]\n", line);
+		check_color(line);
 		i++;
 	}
 }
 
-void	check_color_data(char *line)
+void	check_color(char *line)
 {
 	int	i;
 

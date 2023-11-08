@@ -12,10 +12,15 @@
 
 #include "parser.h"
 
-void	set_map_data(int fd, t_world *world)
+void	read_map(int fd, t_world *world, t_list **lst);
+void	arrange_map(t_world *world, t_list *lst);
+void	*ft_lst_push_back(t_list **lst, char *line);
+
+void	set_map(int fd, t_world *world)
 {
 	t_list	*lst;
 
+	ft_dprintf(1, "-----set_map-----\n");
 	read_map(fd, world, &lst);
 	arrange_map(world, lst);
 }
@@ -32,7 +37,8 @@ void	read_map(int fd, t_world *world, t_list **lst)
 	while (line != NULL)
 	{
 		del_newline_cord(line);
-		ft_lst_push_back(lst, line);
+		ft_dprintf(1, "[%s]\n", line);
+		*lst = ft_lst_push_back(lst, line);
 		line = get_next_line(fd);
 		if (errno != 0)
 			error_exit_msg("mallocに失敗してたお");
@@ -45,6 +51,7 @@ void	*ft_lst_push_back(t_list **lst, char *line)
 		*lst = ft_lstnew(line);
 	else
 		ft_lstadd_back(lst, ft_lstnew(line));
+	return (*lst);
 }
 
 //mapの整形をする

@@ -49,3 +49,9 @@ bool	del_newline_cord(char *line)
 	*del_point = '\0';
 	return (true);
 }
+
+void	error_exit_msg(char *line)
+{
+	ft_dprintf(2, "%s\n", line);
+	exit (1);
+}
