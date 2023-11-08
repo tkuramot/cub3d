@@ -6,7 +6,7 @@
 /*   By: tokazaki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 13:43:41 by tokazaki          #+#    #+#             */
-/*   Updated: 2023/11/07 14:55:10 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/08 19:48:46 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,27 @@
 void	check_color(char *line);
 char	*check_mono_color_data(char *line);
 int		check_floor_or_ceiling(char *line);
+int		create_trgb(int color);
 void	set_color_to_world(char	*line, t_world *world);
 
 void	set_color(int fd, t_world *world)
 {
-	ft_dprintf(1, "[set_color]\n");
 	int		i;
 	char	*line;
 
+	ft_dprintf(1, "-----set_color-----\n");
 	i = 0;
 	while (i < 2)
 	{
 		line = read_file(fd);
 		del_newline_cord(line);
-		ft_dprintf(1, "[%s]\n", line);
 		check_color(line);
+		set_color_to_world(line, world);
+		free(line);
 		i++;
 	}
+	ft_dprintf(1, "[f:%x]\n", world->floor_color);
+	ft_dprintf(1, "[c:%x]\n", world->ceiling_color);
 }
 
 void	check_color(char *line)
@@ -68,20 +72,4 @@ char	*check_mono_color_data(char *line)
 	if (3 < j)
 		error_exit_msg("0 ~ 255 の間の正しい色のデータを入れてね");
 	return (line);
-}
-
-void	set_color_to_world(char	*line, t_world *world)
-{
-}
-
-int	check_floor_or_ceiling(char *line)
-{
-	int	direction;
-
-	direction = INIT;
-	if (strncmp("F ", line, 3))
-		direction = 'F';
-	if (strncmp("C ", line, 3))
-		direction = 'C';
-	return (direction);
 }

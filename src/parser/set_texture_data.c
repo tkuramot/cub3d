@@ -6,7 +6,7 @@
 /*   By: tokazaki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:08:06 by tokazaki          #+#    #+#             */
-/*   Updated: 2023/11/07 17:08:19 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/08 14:32:15 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	set_texture(int fd, t_world *world)
 	char	*texture_path;
 
 	i = 0;
-	ft_dprintf(1, "[NO:%d SO:%d WE:%d EA:%d INIT:%d]\n", NORTH, SOUTH,WEST,EAST, INIT);
+	ft_dprintf(1, "-----set_texture-----\n");
 	while (i < 4)
 	{
 		line = read_file(fd);
