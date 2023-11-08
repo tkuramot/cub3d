@@ -29,8 +29,8 @@ struct s_tecture
 struct s_world
 {
 	char			**map;
-	int64_t			row;
-	int64_t			column;
+	int64_t			height;
+	int64_t			width;
 	int				floor_color;
 	int				ceiling_color;
 	t_texture		texture;
