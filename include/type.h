@@ -13,20 +13,27 @@
 #ifndef TYPE_H
 # define TYPE_H
 
-typedef struct s_tecture
+# include <inttypes.h>
+
+typedef struct s_tecture	t_texture;
+typedef struct s_world		t_world;
+
+struct s_tecture
 {
 	char	*north_texture;
 	char	*south_texture;
 	char	*west_texture;
 	char	*east_texture;
-}	t_texture;
+};
 
-typedef struct s_world
+struct s_world
 {
-	char		**map;
-	int			floor_color;
-	int			ceiling_color;
-	t_texture	texture;
-}	t_world;
+	char			**map;
+	int64_t			row;
+	int64_t			column;
+	int				floor_color;
+	int				ceiling_color;
+	t_texture		texture;
+};
 
 #endif
