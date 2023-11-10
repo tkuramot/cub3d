@@ -39,7 +39,7 @@ char	*skip_space(char *line)
 	return (line);
 }
 
-void	del_newline_cord(char *line)
+void	del_newline_code(char *line)
 {
 	char	*del_point;
 

@@ -32,7 +32,7 @@ static void	read_map(int fd, t_world *world, t_list **lst)
 	line = read_file(fd);
 	if (line == NULL)
 		error_exit_msg("mapがないよ");
-	del_newline_cord(line);
+	del_newline_code(line);
 	*lst = ft_lstnew(line);
 	while (1)
 	{
@@ -41,7 +41,7 @@ static void	read_map(int fd, t_world *world, t_list **lst)
 			error_exit_msg("mallocに失敗してたお");
 		if (line == NULL)
 			break ;
-		del_newline_cord(line);
+		del_newline_code(line);
 		ft_lstadd_back(lst, ft_lstnew(line));
 	}
 	(void)world;

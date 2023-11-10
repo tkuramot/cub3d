@@ -24,7 +24,7 @@ void	set_color(int fd, t_world *world)
 	while (i < 2)
 	{
 		line = read_file(fd);
-		del_newline_cord(line);
+		del_newline_code(line);
 		check_color(line);
 		set_color_to_world(line, world);
 		free(line);

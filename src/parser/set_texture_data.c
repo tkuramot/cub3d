@@ -26,7 +26,7 @@ void	set_texture(int fd, t_world *world)
 		line = read_file(fd);
 		if (line == NULL)
 			error_exit_msg("方角のtextureが不足しています");
-		del_newline_cord(line);
+		del_newline_code(line);
 		set_texture_to_world(line, world);
 		free(line);
 		i++;

@@ -45,6 +45,6 @@ bool	is_start_char(char chr);
 //utils
 char	*skip_space(char *line);
 char	*read_file(int fd);
-void	del_newline_cord(char *line);
+void	del_newline_code(char *line);
 
 #endif
