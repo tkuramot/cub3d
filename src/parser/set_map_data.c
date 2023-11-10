@@ -24,6 +24,7 @@ void	set_map(int fd, t_world *world)
 
 	read_map(fd, world, &lst);
 	arrange_map(world, lst);
+	ft_lstclear(&lst, free);
 }
 //	ft_dprintf(1, "-----set_map-----\n");
 //	ft_lstiter(lst, print_list);
