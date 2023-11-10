@@ -12,33 +12,20 @@
 
 #include "parser.h"
 
-void	read_map(int fd, t_world *world, t_list **lst);
-void	arrange_map(t_world *world, t_list *lst);
-void	*ft_lst_push_back(t_list **lst, char *line);
-void	print_list(void *line);
-int		count_max_len(t_list *lst);
+static void	read_map(int fd, t_world *world, t_list **lst);
+void		print_list(void *line);
 
 void	set_map(int fd, t_world *world)
 {
 	t_list	*lst;
 
 	read_map(fd, world, &lst);
-	arrange_map(world, lst);
+	arrange_map_lst_to_ptr(world, lst);
 	ft_lstclear(&lst, free);
 }
-//	ft_dprintf(1, "-----set_map-----\n");
-//	ft_lstiter(lst, print_list);
 
-void	print_list(void *line)
-{
-	ft_dprintf(1, "[%s]\n", (char *)line);
-}
-
-//読み込みをして、線形リストにする
-//void	ft_lstiter(t_list *lst, void (*f)(void *))
-//t_list	*ft_lstnew(void *content)
-//void	ft_lstadd_back(t_list **lst, t_list *new)
-void	read_map(int fd, t_world *world, t_list **lst)
+//mapを読み込んで、線形リストにする
+static void	read_map(int fd, t_world *world, t_list **lst)
 {
 	char	*line;
 
@@ -58,4 +45,12 @@ void	read_map(int fd, t_world *world, t_list **lst)
 		ft_lstadd_back(lst, ft_lstnew(line));
 	}
 	(void)world;
+}
+
+//debug用
+//	ft_dprintf(1, "-----set_map-----\n");
+//	ft_lstiter(lst, print_list);
+void	print_list(void *line)
+{
+	ft_dprintf(1, "[%s]\n", (char *)line);
 }

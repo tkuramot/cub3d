@@ -12,26 +12,26 @@
 
 #include "parser.h"
 
-//mapの整形をする
-char	**init_map(int lst_size, int max_len);
-int		count_max_len(t_list *lst);
-void	cpy_lst_to_map(char **map, t_list *lst);
+static char	**init_map(int lst_size, int max_len);
+static int	count_max_len(t_list *lst);
+static void	cpy_lst_to_ptr_map(char **map, t_list *lst);
 
-void	arrange_map(t_world *world, t_list *lst)
+//mapの整形をする
+void	arrange_map_lst_to_ptr(t_world *world, t_list *lst)
 {
 	int	max_len;
 	int	lst_size;
 
 	lst_size = ft_lstsize(lst);
 	max_len = count_max_len(lst);
-	ft_dprintf(1, "mapsize max_len %d : size %d\n", max_len, lst_size);
 	world->map = init_map(lst_size, max_len);
-	cpy_lst_to_map(world->map, lst);
+	cpy_lst_to_ptr_map(world->map, lst);
+	world->height = lst_size;
+	world->width = max_len;
 }
-//	world->height = lst_size;
-//	world->width = max_len;
+//	ft_dprintf(1, "mapsize max_len %d : size %d\n", max_len, lst_size);
 
-char	**init_map(int lst_size, int max_len)
+static char	**init_map(int lst_size, int max_len)
 {
 	char	**map;
 	int		i;
@@ -55,20 +55,7 @@ char	**init_map(int lst_size, int max_len)
 	return (map);
 }
 
-void	cpy_lst_to_map(char **map, t_list *lst)
-{
-	int	i;
-
-	i = 0;
-	while (map[i][0] != '\0')
-	{
-		ft_memmove(map[i], lst->content, ft_strlen(lst->content));
-		lst = lst->next;
-		i++;
-	}
-}
-
-int	count_max_len(t_list *lst)
+static int	count_max_len(t_list *lst)
 {
 	size_t	max_len;
 
@@ -80,4 +67,17 @@ int	count_max_len(t_list *lst)
 		lst = lst->next;
 	}
 	return (max_len);
+}
+
+static void	cpy_lst_to_ptr_map(char **map, t_list *lst)
+{
+	int	i;
+
+	i = 0;
+	while (map[i][0] != '\0')
+	{
+		ft_memmove(map[i], lst->content, ft_strlen(lst->content));
+		lst = lst->next;
+		i++;
+	}
 }

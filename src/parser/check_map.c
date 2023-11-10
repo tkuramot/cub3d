@@ -12,28 +12,23 @@
 
 #include "parser.h"
 
-void	check_wall(char **map);
-void	check_start_position(char **map);
-bool	is_start_char(char chr);
-bool	is_map_char(char chr);
+static void	check_start_position(char **map);
+static bool	is_map_char(char chr);
 
 void	check_map(t_world *world)
 {
-	char	**map;
-
-	map = world->map;
-	check_wall(map);
-	check_start_position(map);
+	check_wall((const char **)world->map);
+	check_start_position(world->map);
 }
 
-void	check_start_position(char **map)
+static void	check_start_position(char **map)
 {
-	int	row;
-	int	col;
-	int	start_point;
+	int		row;
+	int		col;
+	bool	start_point;
 
 	row = 0;
-	start_point = 0;
+	start_point = false;
 	while (map[row][0] != '\0')
 	{
 		col = 0;
@@ -41,25 +36,24 @@ void	check_start_position(char **map)
 		{
 			if (is_map_char(map[row][col]) == false)
 				error_exit_msg("mapが間違ってるよ");
-			if (is_start_char(map[row][col]) == true && start_point == 0)
-				start_point = 1;
-			else if (is_start_char(map[row][col]) == true && start_point == 0)
+			if (is_start_char(map[row][col]) == true && start_point == false)
+				start_point = true;
+			else if (is_start_char(map[row][col]) == true \
+					&& start_point == true)
 				error_exit_msg("開始地点が複数ケ所あるよ");
 			col++;
 		}
 		row++;
 	}
-	if (start_point == 0)
+	if (start_point == false)
 		error_exit_msg("start地点が書かれてないよ！");
 }
 
-bool	is_map_char(char chr)
+static bool	is_map_char(char chr)
 {
-	if (chr == ' ' || \
-		chr == '1' || \
-		chr == '0' )
+	if (ft_strchr(" 10", chr) != NULL)
 		return (true);
-	else if (is_start_char(chr) == true)
+	else if (ft_strchr("NSEW", chr) != NULL)
 		return (true);
 	else
 		return (false);
@@ -67,10 +61,7 @@ bool	is_map_char(char chr)
 
 bool	is_start_char(char chr)
 {
-	if (chr == 'N' || \
-		chr == 'S' || \
-		chr == 'E' || \
-		chr == 'W' )
+	if (ft_strchr("NSEW", chr) != NULL)
 		return (true);
 	else
 		return (false);

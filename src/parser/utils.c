@@ -39,19 +39,12 @@ char	*skip_space(char *line)
 	return (line);
 }
 
-bool	del_newline_cord(char *line)
+void	del_newline_cord(char *line)
 {
 	char	*del_point;
 
 	del_point = ft_strchr(line, '\n');
 	if (del_point == NULL)
-		return (false);
+		return ;
 	*del_point = '\0';
-	return (true);
-}
-
-void	error_exit_msg(char *line)
-{
-	ft_dprintf(2, "%s\n", line);
-	exit (1);
 }

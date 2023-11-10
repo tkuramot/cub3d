@@ -1,11 +1,14 @@
 CFLAGS  = -g -MMD -MP -Wall -Wextra -Werror
 DFLAGS = -fsanitize=address -fsanitize=undefined -fsanitize=bounds
 LDFLAGS =
-LIBS    = lib/libft/libft.a lib/minilibx-linux/libmlx_Darwin.a
-INCLUDE = -I./include -I./lib/libft/include -I./lib/minilibx-linux
+LIBS    = lib/libft/libft.a #lib/minilibx-linux/libmlx_Darwin.a
+INCLUDE = -I./include -I./lib/libft/include -I./lib/minilibx-linux \
+	-I./src/utils \
+	-I./src/parser
 NAME    = cub3D
 SRCDIR  = src
 SRCS    = \
+	src/utils/error_msg.c \
 	src/parser/check_map.c \
 	src/parser/get_config.c \
 	src/parser/utils.c \

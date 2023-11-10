@@ -12,8 +12,8 @@
 
 #include "parser.h"
 
-int		check_direction(char *line);
-void	set_texture_to_world(char *line, t_world *world);
+static int	check_direction(char *line);
+static void	set_texture_to_world(char *line, t_world *world);
 
 void	set_texture(int fd, t_world *world)
 {
@@ -34,7 +34,7 @@ void	set_texture(int fd, t_world *world)
 }
 //	ft_dprintf(1, "-----set_texture-----\n");
 
-void	set_texture_to_world(char *line, t_world *world)
+static void	set_texture_to_world(char *line, t_world *world)
 {
 	int	direction;
 
@@ -50,27 +50,12 @@ void	set_texture_to_world(char *line, t_world *world)
 		world->texture.east_texture = ft_strdup(line);
 	else
 		error_exit_msg("Please 正しい方角のテクスチャ入れてね");
+	if (errno != 0)
+		error_exit_msg("malloc失敗したよ");
 }
 //	ft_dprintf(1, "[%d : %s]\n", direction, line);
 
-//char	*check_texture_file(char *line)
-//{
-//	int	fd;
-//	int	direction;
-//
-//	direction = check_direction(line);
-//	line = line[3];
-//	while (*line == ft_isspace)
-//		line++;
-//	if (*line == '\0')
-//		error_exit_msg("Please テクスチャ入れてね");
-//	if (check_line(line))
-//		error_exit_msg("Please テクスチャ一つだけ入れてね");
-//	while (line[i] != ft_isspace(line[i]) && line[i] != '\0')
-//		i++;
-//}
-//
-int	check_direction(char *line)
+static int	check_direction(char *line)
 {
 	if (ft_strncmp("NO ", line, 3) == 0)
 		return (NORTH);

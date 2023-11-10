@@ -12,11 +12,8 @@
 
 #include "parser.h"
 
-void	check_color(char *line);
-char	*check_mono_color_data(char *line);
-int		check_floor_or_ceiling(char *line);
-int		create_trgb(int color);
-void	set_color_to_world(char	*line, t_world *world);
+static void	check_color(char *line);
+static char	*check_mono_color_data(char *line);
 
 void	set_color(int fd, t_world *world)
 {
@@ -36,7 +33,7 @@ void	set_color(int fd, t_world *world)
 }
 //	ft_dprintf(1, "-----set_color-----\n");
 
-void	check_color(char *line)
+static void	check_color(char *line)
 {
 	int	i;
 
@@ -59,17 +56,18 @@ void	check_color(char *line)
 		error_exit_msg("余計なデータが入ってるよ！");
 }
 
-char	*check_mono_color_data(char *line)
+static char	*check_mono_color_data(char *line)
 {
-	int	j;
+	int	i;
+	int	mono_color;
 
-	j = 0;
-	while (ft_isdigit(*line))
-	{
-		line++;
-		j++;
-	}
-	if (3 < j)
+	i = 0;
+	while (ft_isdigit(line[i]))
+		i++;
+	if (3 < i)
 		error_exit_msg("0 ~ 255 の間の正しい色のデータを入れてね");
-	return (line);
+	mono_color = ft_atoi(line);
+	if (255 < mono_color)
+		error_exit_msg("255以上の値が入力されています");
+	return (line + i);
 }

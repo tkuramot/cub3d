@@ -12,32 +12,30 @@
 
 #include "parser.h"
 
-void	check_color(char *line);
-char	*check_mono_color_data(char *line);
-int		check_floor_or_ceiling(char *line);
-int		create_trgb(int color);
-void	set_color_to_world(char	*line, t_world *world);
+static int	check_floor_or_ceiling(char *line);
+static int	create_rgb(int red, int green, int blue);
 
 void	set_color_to_world(char	*line, t_world *world)
 {
+	int	i;
+	int	rgb[3];
 	int	color;
-	int	mono_color;
 	int	ceiling_or_floor;
 
+	i = 0;
 	color = 0;
 	ceiling_or_floor = check_floor_or_ceiling(line);
 	line = skip_space(&line[2]);
 	while (line != NULL)
 	{
-		mono_color = ft_atoi(line);
-		if (255 < mono_color)
-			error_exit_msg("255以上の値が入力されています");
-		color = create_trgb(mono_color);
+		rgb[i] = ft_atoi(line);
 		line = ft_strchr(line, ',');
 		if (line == NULL)
 			break ;
 		line++;
+		i++;
 	}
+	color = create_rgb(rgb[0], rgb[1], rgb[2]);
 	if (ceiling_or_floor == 'C' && world->ceiling_color == 0)
 		world->ceiling_color = color;
 	else if (ceiling_or_floor == 'F' && world->floor_color == 0)
@@ -47,35 +45,15 @@ void	set_color_to_world(char	*line, t_world *world)
 }
 //	ft_dprintf(1, "[%s]\n", line);
 
-int	create_trgb(int mono_color)
+static int	create_rgb(int red, int green, int blue)
 {
-	static int	color;
-	static int	red;
-	static int	green;
-	static int	blue;
-	static int	i;
+	int	color;
 
-	i++;
-	if (i == 1)
-	{
-		color = 0;
-		red = mono_color;
-	}
-	if (i == 2)
-		green = mono_color;
-	if (i == 3)
-	{
-		blue = mono_color;
-		color = (0 << 24 | red << 16 | green << 8 | blue);
-		red = 0;
-		green = 0;
-		blue = 0;
-		i = 0;
-	}
+	color = (red << 16 | green << 8 | blue);
 	return (color);
 }
 
-int	check_floor_or_ceiling(char *line)
+static int	check_floor_or_ceiling(char *line)
 {
 	int	direction;
 

@@ -12,19 +12,14 @@
 
 #include "parser.h"
 
-void	print_world(t_world *world);
+static void	print_world(t_world *world);
+static int	checke_file_name(char *file);
 
 void	get_config(char *argv[], t_world *world)
 {
 	int	open_fd;
 
-	open_fd = open(argv[1], O_DIRECTORY);
-	if (0 < open_fd)
-		error_exit_msg("これ、ディレクトリだよ");
-	errno = 0;
-	open_fd = open(argv[1], O_RDONLY);
-	if (open_fd < 0)
-		error_exit_msg("Please enter the correct file");
+	open_fd = checke_file_name(argv[1]);
 	set_texture(open_fd, world);
 	set_color(open_fd, world);
 	set_map(open_fd, world);
@@ -33,7 +28,27 @@ void	get_config(char *argv[], t_world *world)
 	print_world(world);
 }
 
-void	print_world(t_world *world)
+//ファイル名の確認
+static int	checke_file_name(char *file)
+{
+	int		open_fd;
+	char	*line;
+
+	line = ft_strrchr(file, '.');
+	if (line == NULL || ft_strcmp(line, ".cub") != 0)
+		error_exit_msg("ファイル名間違ってるよ。");
+	open_fd = open(file, O_DIRECTORY);
+	if (0 < open_fd)
+		error_exit_msg("これ、ディレクトリだよ");
+	errno = 0;
+	open_fd = open(file, O_RDONLY);
+	if (open_fd < 0)
+		error_exit_msg("Please enter the correct file");
+	return (open_fd);
+}
+//	ft_dprintf(1, "line:%s/file:%s", line, file);
+
+static void	print_world(t_world *world)
 {
 	int	i;
 	int	fd;

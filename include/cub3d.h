@@ -15,8 +15,7 @@
 
 # include "constant.h"
 # include "type.h"
-
-void	get_config(char *argv[], t_world *world);
-void	error_exit_msg(char *line);
+# include "parser.h"
+# include "utils.h"
 
 #endif
