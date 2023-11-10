@@ -12,9 +12,14 @@
 
 #include "libft.h"
 #include "mlx.h"
-#include <unistd.h>
+#include "cub3d.h"
 
-int	main(void)
+int	main(int argc, char *argv[])
 {
-	write(1, "hi\n", 3);
+	static t_world	world;
+
+	if (argc != 2)
+		error_exit_msg("引数の数が間違ってるよ");
+	get_config(argv, &world);
+	return (0);
 }

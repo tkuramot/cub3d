@@ -44,6 +44,8 @@ void	check_color(char *line)
 	i = 0;
 	while (i < 3)
 	{
+		if (ft_isdigit(*line) == 0)
+			error_exit_msg("色の入力形式が間違っているよ！正しいデータを入れてね");
 		line = check_mono_color_data(line);
 		i++;
 		if (*line != ',' && i < 3)

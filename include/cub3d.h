@@ -13,6 +13,10 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "libft.h"
+#include "constant.h"
+#include "type.h"
+
+void	get_config(char *argv[], t_world *world);
+void	error_exit_msg(char *line);
 
 #endif

@@ -5,7 +5,17 @@ LIBS    = lib/libft/libft.a lib/minilibx-linux/libmlx_Darwin.a
 INCLUDE = -I./include -I./lib/libft/include -I./lib/minilibx-linux
 NAME    = cub3D
 SRCDIR  = src
-SRCS    = src/main.c
+SRCS    = \
+	src/parser/check_map.c \
+	src/parser/get_config.c \
+	src/parser/utils.c \
+	src/parser/set_color_data.c \
+	src/parser/check_map_wall.c \
+	src/parser/set_texture_data.c \
+	src/parser/set_map_arrange.c \
+	src/parser/set_map_data.c \
+	src/parser/set_color_to_world.c \
+	src/main.c
 OBJDIR  = obj
 OBJS    = $(subst $(SRCDIR), $(OBJDIR), $(SRCS:.c=.o))
 DEPENDS = $(OBJS:.o=.d)
@@ -28,12 +38,12 @@ $(LIBS):
 clean:
 	make -C ./lib/libft clean
 	$(MAKE) -C ./lib/minilibx-linux clean
-	$(RM) -r $(OBJDIR)
+	$(RM) -rf $(OBJDIR)
 
 .PHONY: fclean
 fclean: clean
 	make -C ./lib/libft fclean
-	$(RM) $(NAME)
+	$(RM) -rf $(NAME)
 
 .PHONY: re
 re: fclean all
@@ -47,7 +57,6 @@ submodule:
 	git submodule update
 
 cfile:
-	find . -name "*.c" -not -path "./lib/*" | sed 's/\.\///g' | tr '\n' ' '
+	find . -name "*.c" -not -path "./lib/*" | sed 's/\.\///g' | awk '{print "\t"$$0" \\"}' | sed '$$s/ \\//'
 
 -include $(DEPENDS)
-

@@ -28,6 +28,8 @@ void	arrange_map(t_world *world, t_list *lst)
 	world->map = init_map(lst_size, max_len);
 	cpy_lst_to_map(world->map, lst);
 }
+//	world->height = lst_size;
+//	world->width = max_len;
 
 char	**init_map(int lst_size, int max_len)
 {
@@ -68,7 +70,7 @@ void	cpy_lst_to_map(char **map, t_list *lst)
 
 int	count_max_len(t_list *lst)
 {
-	int	max_len;
+	size_t	max_len;
 
 	max_len = 0;
 	while (lst != NULL)

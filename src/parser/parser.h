@@ -16,22 +16,14 @@
 # include <libc.h>
 # include <sys/errno.h>
 # include <stdbool.h>
-# include "../../include/type.h"
-# include "../../lib/libft/include/libft.h"
-# include "../../lib/libft/include/ft_stdio.h"
-
-typedef enum e_direction
-{
-	NORTH,
-	SOUTH,
-	WEST,
-	EAST,
-	INIT
-}		t_direction;
+# include "type.h"
+# include "libft.h"
+# include "constant.h"
 
 void	set_color(int fd, t_world *world);
 void	set_map(int fd, t_world *world);
 void	set_texture(int fd, t_world *world);
+void	check_map(t_world *world);
 
 char	*skip_space(char *line);
 char	*read_file(int fd);

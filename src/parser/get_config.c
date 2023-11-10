@@ -18,18 +18,25 @@ void	get_config(char *argv[], t_world *world)
 {
 	int	open_fd;
 
+	open_fd = open(argv[1], O_DIRECTORY);
+	if (0 < open_fd)
+		error_exit_msg("これ、ディレクトリだよ");
+	errno = 0;
 	open_fd = open(argv[1], O_RDONLY);
 	if (open_fd < 0)
 		error_exit_msg("Please enter the correct file");
 	set_texture(open_fd, world);
 	set_color(open_fd, world);
 	set_map(open_fd, world);
+	close(open_fd);
+	check_map(world);
 	print_world(world);
 }
 
 void	print_world(t_world *world)
 {
 	int	i;
+	int	fd;
 
 	ft_dprintf(1, "----- texture -----\n");
 	ft_dprintf(1, "%s\n", world->texture.north_texture);
@@ -46,15 +53,6 @@ void	print_world(t_world *world)
 		ft_dprintf(1, "|%s|\n", world->map[i]);
 		i++;
 	}
-}
-
-int	main(int argc, char *argv[])
-{
-	static t_world	world;
-
-	if (argc != 2)
-		error_exit_msg("引数の数が間違ってるよ");
-	get_config(argv, &world);
-	printf("end\n");
-	return (0);
+	fd = open(world->texture.north_texture, O_RDONLY);
+	ft_dprintf(2, "northfileの中身：%s", get_next_line(fd));
 }

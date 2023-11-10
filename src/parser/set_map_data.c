@@ -56,4 +56,5 @@ void	read_map(int fd, t_world *world, t_list **lst)
 		del_newline_cord(line);
 		ft_lstadd_back(lst, ft_lstnew(line));
 	}
+	(void)world;
 }

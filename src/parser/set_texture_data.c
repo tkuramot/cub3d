@@ -19,7 +19,6 @@ void	set_texture(int fd, t_world *world)
 {
 	int		i;
 	char	*line;
-	char	*texture_path;
 
 	i = 0;
 	while (i < 4)
@@ -37,8 +36,7 @@ void	set_texture(int fd, t_world *world)
 
 void	set_texture_to_world(char *line, t_world *world)
 {
-	char	*texture_path;
-	int		direction;
+	int	direction;
 
 	direction = check_direction(line);
 	line = skip_space(&line[2]);
