@@ -20,5 +20,6 @@ int	main(int argc, char *argv[])
 	if (argc != 2)
 		error_exit_msg("引数の数が間違ってるよ");
 	get_config(argv, &world);
+	mlx_init();
 	return (0);
 }

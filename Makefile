@@ -1,7 +1,7 @@
 CFLAGS  = -g -MMD -MP -Wall -Wextra -Werror
 DFLAGS = -fsanitize=address -fsanitize=undefined -fsanitize=bounds
-LDFLAGS =
-LIBS    = lib/libft/libft.a #lib/minilibx-linux/libmlx_Darwin.a
+LDFLAGS = -framework OpenGL -framework AppKit -L/usr/X11R6/lib -lX11 -lXext
+LIBS    = lib/libft/libft.a lib/minilibx-linux/libmlx_Darwin.a
 INCLUDE = -I./include -I./lib/libft/include -I./lib/minilibx-linux \
 	-I./src/utils \
 	-I./src/parser
