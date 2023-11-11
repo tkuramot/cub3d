@@ -13,15 +13,13 @@
 #ifndef PARSER_H
 # define PARSER_H
 
-# include <libc.h>
+# include <fcntl.h>
 # include <sys/errno.h>
 # include <stdbool.h>
-
 # include "libft.h"
 
 # include "type.h"
 # include "constant.h"
-
 # include "utils.h"
 
 //get_config
