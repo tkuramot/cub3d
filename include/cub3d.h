@@ -13,4 +13,9 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# include "constant.h"
+# include "type.h"
+# include "parser.h"
+# include "utils.h"
+
 #endif

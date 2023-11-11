@@ -1,0 +1,4 @@
+.DS*
+.*.un~
+a.out*
+cub3D

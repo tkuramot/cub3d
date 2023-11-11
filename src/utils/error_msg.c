@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: tokazaki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/02 20:39:22 by tkuramot         ###   ########.fr       */
+/*   Created: 2023/11/07 13:42:41 by tokazaki          #+#    #+#             */
+/*   Updated: 2023/11/07 18:37:39 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-#include "cub3d.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+void	error_exit_msg(char *line)
 {
-	static t_world	world;
-
-	if (argc != 2)
-		error_exit_msg("引数の数が間違ってるよ");
-	get_config(argv, &world);
-	return (0);
+	ft_dprintf(2, "%s\n", line);
+	exit (1);
 }
