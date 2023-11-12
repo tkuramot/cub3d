@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 22:12:24 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/12 23:08:36 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/13 00:06:26 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,24 @@
 # define TYPE_H
 
 # include <inttypes.h>
+# include <limits.h>
+# include <stdbool.h>
 
-typedef struct s_coord		t_coord;
-typedef struct s_vector2d	t_vector2d;
+typedef struct s_vec2i		t_vec2i;
+typedef struct s_vec2d		t_vec2d;
 typedef struct s_tecture	t_texture;
 typedef struct s_mlx_data	t_mlx_data;
 typedef struct s_dda		t_dda;
 typedef struct s_player		t_player;
 typedef struct s_world		t_world;
 
-struct s_vector2d
+struct s_vec2d
 {
 	double	x;
 	double	y;
 };
 
-struct s_coord
+struct s_vec2i
 {
 	int	x;
 	int	y;
@@ -54,20 +56,22 @@ struct s_mlx_data
 // DDA stands for digital differential analysis
 struct s_dda
 {
-	double		camera_x;
-	t_vector2d	ray_dir;
-	double		ray_len_to_wall_x;
-	double		ray_len_to_wall_y;
-	double		ray_len_btw_x_axis;
-	double		ray_len_btw_y_axis;
+	double	camera_x;
+	t_vec2d	ray_dir;
+	t_vec2i	next_step_dir;
+	double	ray_len_to_wall_x;
+	double	ray_len_to_wall_y;
+	double	ray_len_btw_x_axis;
+	double	ray_len_btw_y_axis;
+	bool	did_hit_wall;
 };
 
 struct s_player
 {
-	t_coord		grid_pos;
-	t_vector2d	precise_pos;
-	t_vector2d	dir;
-	t_vector2d	camera_plane;
+	t_vec2i	grid_pos;
+	t_vec2d	precise_pos;
+	t_vec2d	dir;
+	t_vec2d	camera_plane;
 };
 
 struct s_world
