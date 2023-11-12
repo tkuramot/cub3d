@@ -6,12 +6,13 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 00:17:09 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/13 00:50:25 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/13 01:29:55 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constant.h"
 #include "type.h"
+#include <stdio.h>
 
 void	perform_dda(t_world *world, t_dda *dda)
 {
@@ -33,4 +34,12 @@ void	perform_dda(t_world *world, t_dda *dda)
 			== WALL)
 			dda->did_hit_wall = true;
 	}
+}
+
+double	get_dist_camera_plane_to_wall(t_dda *dda)
+{
+	if (dda->hit_axis == X_AXIS)
+		return (dda->ray_len_to_wall_x - dda->ray_len_btw_x_axis);
+	else
+		return (dda->ray_len_to_wall_y - dda->ray_len_btw_y_axis);
 }

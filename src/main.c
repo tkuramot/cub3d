@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/13 01:00:40 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/13 01:24:16 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "drawing.h"
 #include "game.h"
 #include "mlx.h"
+#include <stdio.h>
 
 // TODO Read texture files
 int	main(int argc, char *argv[])
@@ -25,6 +26,8 @@ int	main(int argc, char *argv[])
 		error_exit_msg("引数の数が間違ってるよ");
 	get_config(argv, &world);
 	init_player(&world.player);
+	init_mlx_data(&world.mlx_data);
 	mlx_loop_hook(world.mlx_data.mlx, game_loop, &world);
+	mlx_loop(world.mlx_data.mlx);
 	return (0);
 }
