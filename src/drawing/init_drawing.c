@@ -11,19 +11,26 @@
 /* ************************************************************************** */
 
 #include "constant.h"
-#include "cub3d.h"
-#include "drawing.h"
 #include "mlx.h"
+#include "type.h"
 
-// TODO Read texture files
-int	main(int argc, char *argv[])
+// TODO Replace temporary values with config ones
+// Exit this program when an error occurs
+void	init_dda(t_dda *dda)
 {
-	static t_world	world;
+	dda->position.x = 0;
+	dda->position.y = 0;
+	dda->direction.x = -1;
+	dda->direction.y = 0;
+	dda->camera_plane.x = 0;
+	dda->camera_plane.y = 0.66;
+	dda->time = 0;
+	dda->old_time = 0;
+}
 
-	if (argc != 2)
-		error_exit_msg("引数の数が間違ってるよ");
-	get_config(argv, &world);
-	init_dda(&world.dda);
-	mlx_loop_hook(world.mlx_data.mlx, game_loop, &world);
-	return (0);
+void	init_mlx_data(t_mlx_data *mlx_data)
+{
+	mlx_data->mlx = mlx_init();
+	mlx_data->mlx_win = mlx_new_window(mlx_data->mlx,
+			WINDOW_WIDTH, WINDOW_HEIGHT, "cub3D");
 }

@@ -11,19 +11,12 @@
 /* ************************************************************************** */
 
 #include "constant.h"
-#include "cub3d.h"
-#include "drawing.h"
-#include "mlx.h"
+#include "type.h"
 
-// TODO Read texture files
-int	main(int argc, char *argv[])
+int	game_loop(void *arg)
 {
-	static t_world	world;
+	t_world	*world;
 
-	if (argc != 2)
-		error_exit_msg("引数の数が間違ってるよ");
-	get_config(argv, &world);
-	init_dda(&world.dda);
-	mlx_loop_hook(world.mlx_data.mlx, game_loop, &world);
+	world = (t_world *)arg;
 	return (0);
 }
