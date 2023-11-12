@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_drawing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/02 20:39:22 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/12 22:48:22 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,14 @@
 
 // TODO Replace temporary values with config ones
 // Exit this program when an error occurs
-void	init_dda(t_dda *dda)
+void	init_player(t_player *player)
 {
-	dda->position.x = 0;
-	dda->position.y = 0;
-	dda->direction.x = -1;
-	dda->direction.y = 0;
-	dda->camera_plane.x = 0;
-	dda->camera_plane.y = 0.66;
-	dda->time = 0;
-	dda->old_time = 0;
+	player->position.x = 0;
+	player->position.y = 0;
+	player->direction.x = -1;
+	player->direction.y = 0;
+	player->camera_plane.x = 0;
+	player->camera_plane.y = 0.66;
 }
 
 void	init_mlx_data(t_mlx_data *mlx_data)
