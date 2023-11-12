@@ -58,9 +58,9 @@ static int	check_floor_or_ceiling(char *line)
 	int	direction;
 
 	direction = INIT;
-	if (strncmp("F ", line, 2) == 0)
+	if (ft_strncmp("F ", line, 2) == 0)
 		direction = 'F';
-	if (strncmp("C ", line, 2) == 0)
+	if (ft_strncmp("C ", line, 2) == 0)
 		direction = 'C';
 	return (direction);
 }
