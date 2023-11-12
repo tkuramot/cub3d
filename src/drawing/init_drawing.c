@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/12 22:48:22 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/13 00:36:01 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 // Exit this program when an error occurs
 void	init_player(t_player *player)
 {
-	player->position.x = 0;
-	player->position.y = 0;
-	player->direction.x = -1;
-	player->direction.y = 0;
+	player->precise_pos.x = 0;
+	player->precise_pos.y = 0;
+	player->dir.x = -1;
+	player->dir.y = 0;
 	player->camera_plane.x = 0;
 	player->camera_plane.y = 0.66;
 }

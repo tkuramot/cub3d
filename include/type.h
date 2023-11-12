@@ -6,13 +6,14 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 22:12:24 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/13 00:06:26 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/13 00:45:09 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPE_H
 # define TYPE_H
 
+#include "constant.h"
 # include <inttypes.h>
 # include <limits.h>
 # include <stdbool.h>
@@ -64,6 +65,7 @@ struct s_dda
 	double	ray_len_btw_x_axis;
 	double	ray_len_btw_y_axis;
 	bool	did_hit_wall;
+	t_axis	hit_axis;
 };
 
 struct s_player
