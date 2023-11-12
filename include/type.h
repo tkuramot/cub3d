@@ -6,14 +6,14 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 22:12:24 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/13 00:45:09 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/13 00:52:18 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPE_H
 # define TYPE_H
 
-#include "constant.h"
+# include "constant.h"
 # include <inttypes.h>
 # include <limits.h>
 # include <stdbool.h>

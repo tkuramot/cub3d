@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/13 01:00:40 by tkuramot         ###   ########.fr       */
+/*   Created: 2023/11/13 00:59:33 by tkuramot          #+#    #+#             */
+/*   Updated: 2023/11/13 01:00:00 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "constant.h"
-#include "cub3d.h"
-#include "drawing.h"
-#include "game.h"
-#include "mlx.h"
+#ifndef GAME_H
+# define GAME_H
 
-// TODO Read texture files
-int	main(int argc, char *argv[])
-{
-	static t_world	world;
+# include "type.h"
 
-	if (argc != 2)
-		error_exit_msg("引数の数が間違ってるよ");
-	get_config(argv, &world);
-	init_player(&world.player);
-	mlx_loop_hook(world.mlx_data.mlx, game_loop, &world);
-	return (0);
-}
+void	init_player(t_player *player);
+int		game_loop(void *arg);
+
+#endif

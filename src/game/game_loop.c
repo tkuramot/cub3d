@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/13 01:00:40 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/13 00:55:37 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constant.h"
-#include "cub3d.h"
 #include "drawing.h"
-#include "game.h"
-#include "mlx.h"
+#include "libft.h"
+#include "type.h"
+#include <utils.h>
 
-// TODO Read texture files
-int	main(int argc, char *argv[])
+int	game_loop(void *arg)
 {
-	static t_world	world;
+	t_world	*world;
+	t_dda	dda;
+	int		x;
 
-	if (argc != 2)
-		error_exit_msg("引数の数が間違ってるよ");
-	get_config(argv, &world);
-	init_player(&world.player);
-	mlx_loop_hook(world.mlx_data.mlx, game_loop, &world);
+	world = (t_world *)arg;
+	x = 0;
+	while (x < WINDOW_WIDTH)
+	{
+		prepare_dda(world, &dda, x);
+	}
 	return (0);
 }

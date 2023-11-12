@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/13 01:00:40 by tkuramot         ###   ########.fr       */
+/*   Created: 2023/11/13 00:57:43 by tkuramot          #+#    #+#             */
+/*   Updated: 2023/11/13 00:58:10 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "constant.h"
-#include "cub3d.h"
-#include "drawing.h"
-#include "game.h"
-#include "mlx.h"
+#include "type.h"
 
-// TODO Read texture files
-int	main(int argc, char *argv[])
+// TODO Replace temporary values with config ones
+// Exit this program when an error occurs
+void	init_player(t_player *player)
 {
-	static t_world	world;
-
-	if (argc != 2)
-		error_exit_msg("引数の数が間違ってるよ");
-	get_config(argv, &world);
-	init_player(&world.player);
-	mlx_loop_hook(world.mlx_data.mlx, game_loop, &world);
-	return (0);
+	player->precise_pos.x = 0;
+	player->precise_pos.y = 0;
+	player->dir.x = -1;
+	player->dir.y = 0;
+	player->camera_plane.x = 0;
+	player->camera_plane.y = 0.66;
 }
+

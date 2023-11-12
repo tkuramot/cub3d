@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_loop.c                                        :+:      :+:    :+:   */
+/*   dda.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/12 23:57:38 by tkuramot         ###   ########.fr       */
+/*   Created: 2023/11/13 00:58:24 by tkuramot          #+#    #+#             */
+/*   Updated: 2023/11/13 00:59:12 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "constant.h"
-#include "drawing.h"
-#include "libft.h"
-#include "type.h"
-#include <utils.h>
+#ifndef DDA_H
+# define DDA_H
 
-int	game_loop(void *arg)
-{
-	t_world	*world;
-	t_dda	dda;
-	int		x;
+# include "type.h"
 
-	world = (t_world *)arg;
-	x = 0;
-	while (x < WINDOW_WIDTH)
-	{
-		prepare_dda(world, &dda, x);
-	}
-	return (0);
-}
+void	prepare_dda(t_world *world, t_dda *dda, int x);
+void	perform_dda(t_world *world, t_dda *dda);
+
+#endif
