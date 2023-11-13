@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 22:12:24 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/13 01:14:23 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/13 22:34:47 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@
 # include <limits.h>
 # include <stdbool.h>
 
-typedef struct s_vec2i		t_vec2i;
-typedef struct s_vec2d		t_vec2d;
-typedef struct s_tecture	t_texture;
-typedef struct s_mlx_data	t_mlx_data;
-typedef struct s_dda		t_dda;
-typedef struct s_player		t_player;
-typedef struct s_world		t_world;
+typedef struct s_vec2i			t_vec2i;
+typedef struct s_vec2d			t_vec2d;
+typedef struct s_frame_buffer	t_frame_buffer;
+typedef struct s_tecture		t_texture;
+typedef struct s_mlx_data		t_mlx_data;
+typedef struct s_dda			t_dda;
+typedef struct s_player			t_player;
+typedef struct s_world			t_world;
 
 struct s_vec2d
 {
@@ -44,6 +45,15 @@ struct s_tecture
 	char	*south_texture;
 	char	*west_texture;
 	char	*east_texture;
+};
+
+struct s_frame_buffer
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 };
 
 struct s_mlx_data

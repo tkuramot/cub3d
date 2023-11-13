@@ -9,6 +9,7 @@ NAME    = cub3D
 SRCDIR  = src
 SRCS    = \
 	src/drawing/init_drawing.c \
+	src/drawing/draw_utils.c \
 	src/utils/error_msg.c \
 	src/utils/double_abs.c \
 	src/game/game_loop.c \
