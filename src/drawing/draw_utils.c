@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 01:48:25 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/13 22:36:47 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/13 22:50:10 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,16 @@ void	draw_square(t_world *world, t_vec2i start, t_vec2i end, int color)
 	mlx_put_image_to_window(world->mlx_data.mlx, world->mlx_data.mlx_win, frame_buffer.img, 0, 0);
 }
 
-void	draw_vertical_line(t_world *world, int x, double dist_camera_plane_to_wall)
+void	render_wall_vertical_line(t_world *world, int x, int line_height, int color)
 {
-	int	line_height;
 	int	line_start;
 	int	line_end;
 
-	line_height = (int)(WINDOW_HEIGHT / dist_camera_plane_to_wall);
 	line_start = -line_height / 2 + WINDOW_HEIGHT / 2;
 	if (line_start < 0)
 		line_start = 0;
 	line_end = line_height / 2 + WINDOW_HEIGHT / 2;
 	if (line_end >= WINDOW_HEIGHT)
 		line_end = WINDOW_HEIGHT - 1;
-	draw_square(world, (t_vec2i){x, line_start}, (t_vec2i){x, line_end}, 0X00FF00000);
+	draw_square(world, (t_vec2i){x, line_start}, (t_vec2i){x, line_end}, color);
 }

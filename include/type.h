@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 22:12:24 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/13 22:34:47 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/13 22:44:07 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,11 @@ struct s_frame_buffer
 
 struct s_mlx_data
 {
-	void	*mlx;
-	void	*mlx_win;
-	double	time;
-	double	old_time;
+	void			*mlx;
+	void			*mlx_win;
+	t_frame_buffer	frame_buffer;
+	double			time;
+	double			old_time;
 };
 
 // DDA stands for digital differential analysis
