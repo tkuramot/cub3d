@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 01:48:25 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/13 22:50:10 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/14 08:55:47 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,20 @@ static void	my_mlx_pixel_put(t_frame_buffer *frame_buffer, int x, int y, int col
 // start points to top-left of the square and end points to bottom right of it
 void	draw_square(t_world *world, t_vec2i start, t_vec2i end, int color)
 {
-	t_frame_buffer frame_buffer;
 	int	x;
 	int	y;
 
-	frame_buffer.img = mlx_new_image(world->mlx_data.mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
-	frame_buffer.addr = mlx_get_data_addr(frame_buffer.img, &frame_buffer.bits_per_pixel, &frame_buffer.line_length, &frame_buffer.endian);
 	y = start.y;
 	while (y <= end.y)
 	{
 		x = start.x;
 		while (x <= end.x)
 		{
-			my_mlx_pixel_put(&frame_buffer, x, y, color);
+			my_mlx_pixel_put(&world->mlx_data.frame_buffer, x, y, color);
 			x++;
 		}
 		y++;
 	}
-	mlx_put_image_to_window(world->mlx_data.mlx, world->mlx_data.mlx_win, frame_buffer.img, 0, 0);
 }
 
 void	render_wall_vertical_line(t_world *world, int x, int line_height, int color)
