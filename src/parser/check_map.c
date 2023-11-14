@@ -14,11 +14,13 @@
 
 static void	check_start_position(char **map);
 static bool	is_map_char(char chr);
+static void	change_end_ptr_to_null(t_world *world);
 
 void	check_map(t_world *world)
 {
 	check_wall((const char **)world->map);
 	check_start_position(world->map);
+	change_end_ptr_to_null(world);
 }
 
 static void	check_start_position(char **map)
@@ -65,4 +67,10 @@ bool	is_start_char(char chr)
 		return (true);
 	else
 		return (false);
+}
+
+static void	change_end_ptr_to_null(t_world *world)
+{
+	free(world->map[world->height]);
+	world->map[world->height] = NULL;
 }
