@@ -63,6 +63,9 @@ re: fclean all
 debug:
 	make DEBUG=1
 
+norm:
+	norminette src include lib/libft
+
 submodule:
 	git submodule init
 	git submodule update
