@@ -8,6 +8,7 @@ INCLUDE = -I./include -I./lib/libft/include -I./lib/minilibx-linux \
 NAME    = cub3D
 SRCDIR  = src
 SRCS    = \
+	src/drawing/frame_buffer.c \
 	src/drawing/init_drawing.c \
 	src/drawing/draw_utils.c \
 	src/utils/error_msg.c \
