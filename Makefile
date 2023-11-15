@@ -8,7 +8,13 @@ INCLUDE = -I./include -I./lib/libft/include -I./lib/minilibx-linux \
 NAME    = cub3D
 SRCDIR  = src
 SRCS    = \
+	src/drawing/frame_buffer.c \
+	src/drawing/init_drawing.c \
+	src/drawing/draw_utils.c \
 	src/utils/error_msg.c \
+	src/utils/double_abs.c \
+	src/game/game_loop.c \
+	src/game/init_player.c \
 	src/parser/check_map.c \
 	src/parser/get_config.c \
 	src/parser/utils.c \
@@ -18,7 +24,9 @@ SRCS    = \
 	src/parser/set_map_arrange.c \
 	src/parser/set_map_data.c \
 	src/parser/set_color_to_world.c \
-	src/main.c
+	src/main.c \
+	src/dda/perform_dda.c \
+	src/dda/prepare_dda.c
 OBJDIR  = obj
 OBJS    = $(subst $(SRCDIR), $(OBJDIR), $(SRCS:.c=.o))
 DEPENDS = $(OBJS:.o=.d)
@@ -54,6 +62,9 @@ re: fclean all
 .PHONY: debug
 debug:
 	make DEBUG=1
+
+norm:
+	norminette src include lib/libft
 
 submodule:
 	git submodule init

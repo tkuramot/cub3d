@@ -2,3 +2,5 @@
 .*.un~
 a.out*
 cub3D
+*.o
+*.d

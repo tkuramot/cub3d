@@ -1,33 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/14 09:01:26 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/15 13:07:49 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constant.h"
-#include "cub3d.h"
+#include "dda.h"
 #include "drawing.h"
-#include "game.h"
+#include "libft.h"
 #include "mlx.h"
+#include "type.h"
 #include <stdio.h>
+#include <utils.h>
 
-// TODO Read texture files
-int	main(int argc, char *argv[])
+// Unused var
+int	game_loop(void *arg)
 {
-	static t_world	world;
+	t_world	*world;
+	t_dda	dda;
+	int		x;
+	double	dist_camera_plane_to_wall;
+	int		line_height;
 
-	if (argc != 2)
-		error_exit_msg("引数の数が間違ってるよ");
-	get_config(argv, &world);
-	init_player(&world.player);
-	init_mlx_data(&world.mlx_data);
-	mlx_loop_hook(world.mlx_data.mlx, game_loop, &world);
-	mlx_loop(world.mlx_data.mlx);
+	world = (t_world *)arg;
+	x = 0;
+	frame_buffer_allocate(&world->mlx_data);
+	while (x < WINDOW_WIDTH)
+	{
+		prepare_dda(world, &dda, x);
+		perform_dda(world, &dda);
+		dist_camera_plane_to_wall = get_dist_camera_plane_to_wall(&dda);
+		line_height = (int)(WINDOW_HEIGHT / dist_camera_plane_to_wall);
+		render_wall_vertical_line(&world->mlx_data, x, line_height, 0X00FF0000);
+		x++;
+	}
+	frame_buffer_apply(&world->mlx_data);
+	frame_buffer_destroy(&world->mlx_data);
 	return (0);
 }

@@ -1,41 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   constant.h                                         :+:      :+:    :+:   */
+/*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/15 13:05:12 by tkuramot         ###   ########.fr       */
+/*   Created: 2023/11/13 00:59:33 by tkuramot          #+#    #+#             */
+/*   Updated: 2023/11/13 01:00:00 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONSTANT_H
-# define CONSTANT_H
+#ifndef GAME_H
+# define GAME_H
 
-# define WINDOW_WIDTH 1280
-# define WINDOW_HEIGHT 720
-# define INFINITY INT_MAX
+# include "type.h"
 
-typedef enum e_direction
-{
-	NORTH,
-	SOUTH,
-	WEST,
-	EAST,
-	INIT
-}		t_direction;
-
-typedef enum e_axis
-{
-	X_AXIS,
-	Y_AXIS
-}		t_axis;
-
-typedef enum e_map_chr
-{
-	WALL = '1',
-	EMPTY = '0'
-}		t_map_chr;
+void	init_player(t_player *player);
+int		game_loop(void *arg);
 
 #endif
