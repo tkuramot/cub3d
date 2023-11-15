@@ -1,41 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   constant.h                                         :+:      :+:    :+:   */
+/*   init_drawing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/15 13:05:12 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/14 10:12:26 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONSTANT_H
-# define CONSTANT_H
+#include "constant.h"
+#include "mlx.h"
+#include "type.h"
 
-# define WINDOW_WIDTH 1280
-# define WINDOW_HEIGHT 720
-# define INFINITY INT_MAX
-
-typedef enum e_direction
+void	init_mlx_data(t_mlx_data *mlx_data)
 {
-	NORTH,
-	SOUTH,
-	WEST,
-	EAST,
-	INIT
-}		t_direction;
-
-typedef enum e_axis
-{
-	X_AXIS,
-	Y_AXIS
-}		t_axis;
-
-typedef enum e_map_chr
-{
-	WALL = '1',
-	EMPTY = '0'
-}		t_map_chr;
-
-#endif
+	mlx_data->mlx = mlx_init();
+	mlx_data->mlx_win = mlx_new_window(mlx_data->mlx,
+			WINDOW_WIDTH, WINDOW_HEIGHT, "cub3D");
+}
