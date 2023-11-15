@@ -63,7 +63,9 @@ static bool	is_map_char(char chr)
 
 bool	is_start_char(char chr)
 {
-	if (ft_strchr("NSEW", chr) != NULL)
+	if (chr == '\0')
+		return (false);
+	else if (ft_strchr("NSEW", chr) != NULL)
 		return (true);
 	else
 		return (false);
