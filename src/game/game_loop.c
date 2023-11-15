@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/14 10:25:11 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/15 13:07:49 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	game_loop(void *arg)
 
 	world = (t_world *)arg;
 	x = 0;
-	allocate_frame_buffer(&world->mlx_data);
+	frame_buffer_allocate(&world->mlx_data);
 	while (x < WINDOW_WIDTH)
 	{
 		prepare_dda(world, &dda, x);
@@ -40,7 +40,7 @@ int	game_loop(void *arg)
 		render_wall_vertical_line(&world->mlx_data, x, line_height, 0X00FF0000);
 		x++;
 	}
-	apply_frame_buffer(&world->mlx_data);
-	destroy_frame_buffer(&world->mlx_data);
+	frame_buffer_apply(&world->mlx_data);
+	frame_buffer_destroy(&world->mlx_data);
 	return (0);
 }
