@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/14 09:01:26 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:00:22 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char *argv[])
 	if (argc != 2)
 		error_exit_msg("引数の数が間違ってるよ");
 	get_config(argv, &world);
-	init_player(&world.player);
+	init_player(&world);
 	init_mlx_data(&world.mlx_data);
 	mlx_loop_hook(world.mlx_data.mlx, game_loop, &world);
 	mlx_loop(world.mlx_data.mlx);
