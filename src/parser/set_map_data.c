@@ -31,7 +31,7 @@ static void	read_map(int fd, t_world *world, t_list **lst)
 
 	line = read_file(fd);
 	if (line == NULL)
-		error_exit_msg("no map");
+		error_exit_msg("No map in file");
 	del_newline_code(line);
 	*lst = ft_lstnew(line);
 	while (1)

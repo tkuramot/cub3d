@@ -38,15 +38,15 @@ void	check_wall(const char **map)
 static void	search_wall(const char **map, int row, int col)
 {
 	if (row == 0 || col == 0)
-		error_exit_msg("invalid map");
+		error_exit_msg("Invalid map");
 	if (is_valid_in_wall(map[row][col + 1]) == false)
-		error_exit_msg("invalid map");
+		error_exit_msg("Invalid map");
 	if (is_valid_in_wall(map[row][col - 1]) == false)
-		error_exit_msg("invalid map");
+		error_exit_msg("Invalid map");
 	if (is_valid_in_wall(map[row + 1][col]) == false)
-		error_exit_msg("invalid map");
+		error_exit_msg("Invalid map");
 	if (is_valid_in_wall(map[row - 1][col]) == false)
-		error_exit_msg("invalid map");
+		error_exit_msg("Invalid map");
 }
 
 static bool	is_valid_in_wall(char c)

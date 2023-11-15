@@ -24,7 +24,7 @@ int	main(int argc, char *argv[])
 
 	errno = 0;
 	if (argc != 2)
-		error_exit_msg("only one argument is allowed");
+		error_exit_msg("Only one argument is allowed");
 	get_config(argv, &world);
 	init_player(&world.player);
 	init_mlx_data(&world.mlx_data);
