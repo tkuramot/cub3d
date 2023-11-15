@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 23:53:38 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/07 17:08:23 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:02:05 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	print_world(t_world *world)
 	ft_dprintf(1, "[Ceiling: %x]\n", world->ceiling_color);
 	ft_dprintf(1, "\n----- map -----\n");
 	i = 0;
-	while (world->map[i][0] != '\0')
+	while (world->map[i])
 	{
 		ft_dprintf(1, "|%s|\n", world->map[i]);
 		i++;
