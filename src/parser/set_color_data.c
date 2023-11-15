@@ -42,18 +42,18 @@ static void	check_color(char *line)
 	while (i < 3)
 	{
 		if (ft_isdigit(*line) == 0)
-			error_exit_msg("色の入力形式が間違っているよ！正しいデータを入れてね");
+			error_exit_msg("Color input format is invalid");
 		line = check_mono_color_data(line);
 		i++;
 		if (*line != ',' && i < 3)
-			error_exit_msg("色の入力形式が間違っているよ！正しいデータを入れてね");
+			error_exit_msg("Color data missing in color input");
 		line++;
 	}
 	if (i < 3)
-		error_exit_msg("Please 色の頭文字で、データを入れてね");
+		error_exit_msg("Color data missing in color input");
 	line = skip_space(line);
 	if (*line != '\0')
-		error_exit_msg("余計なデータが入ってるよ！");
+		error_exit_msg("Contains extraneous information");
 }
 
 static char	*check_mono_color_data(char *line)
@@ -64,10 +64,8 @@ static char	*check_mono_color_data(char *line)
 	i = 0;
 	while (ft_isdigit(line[i]))
 		i++;
-	if (3 < i)
-		error_exit_msg("0 ~ 255 の間の正しい色のデータを入れてね");
 	mono_color = ft_atoi(line);
-	if (255 < mono_color)
-		error_exit_msg("255以上の値が入力されています");
+	if (3 < i || 255 < mono_color)
+		error_exit_msg("Value greater than 255");
 	return (line + i);
 }
