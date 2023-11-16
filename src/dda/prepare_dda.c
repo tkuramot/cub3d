@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 23:54:03 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/13 00:15:07 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/17 01:17:19 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,24 +33,24 @@ static void	init_ray_len_to_wall(t_world *world, t_dda *dda)
 	{
 		dda->next_step_dir.x = -1;
 		dda->ray_len_to_wall_x = (world->player.precise_pos.x
-				- world->player.grid_pos.x) * dda->ray_len_btw_x_axis;
+				- dda->grid_pos.x) * dda->ray_len_btw_x_axis;
 	}
 	else
 	{
 		dda->next_step_dir.x = 1;
-		dda->ray_len_to_wall_x = (world->player.grid_pos.x + 1.0
+		dda->ray_len_to_wall_x = (dda->grid_pos.x + 1.0
 				- world->player.precise_pos.x) * dda->ray_len_btw_x_axis;
 	}
 	if (dda->ray_dir.y < 0)
 	{
 		dda->next_step_dir.y = -1;
 		dda->ray_len_to_wall_y = (world->player.precise_pos.y
-				- world->player.grid_pos.y) * dda->ray_len_btw_y_axis;
+				- dda->grid_pos.y) * dda->ray_len_btw_y_axis;
 	}
 	else
 	{
 		dda->next_step_dir.y = 1;
-		dda->ray_len_to_wall_y = (world->player.grid_pos.y + 1.0
+		dda->ray_len_to_wall_y = (dda->grid_pos.y + 1.0
 				- world->player.precise_pos.y) * dda->ray_len_btw_y_axis;
 	}
 }
@@ -63,8 +63,8 @@ void	prepare_dda(t_world *world, t_dda *dda, int x)
 		+ world->player.camera_plane.x * dda->camera_x;
 	dda->ray_dir.y = world->player.dir.y
 		+ world->player.camera_plane.y * dda->camera_x;
-	world->player.grid_pos.x = (int)world->player.precise_pos.x;
-	world->player.grid_pos.y = (int)world->player.precise_pos.y;
+	dda->grid_pos.x = (int)world->player.precise_pos.x;
+	dda->grid_pos.y = (int)world->player.precise_pos.y;
 	init_ray_len_btw_axis(dda);
 	init_ray_len_to_wall(world, dda);
 }

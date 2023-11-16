@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/15 13:05:12 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/17 01:11:59 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
 # define INFINITY INT_MAX
+# define MOVEMENT_SPEED 0.2
 
 typedef enum e_direction
 {
