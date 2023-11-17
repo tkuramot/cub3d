@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/17 01:11:59 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/17 10:25:42 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,58 @@
 # define INFINITY INT_MAX
 # define MOVEMENT_SPEED 0.2
 
-typedef enum e_direction
+typedef enum e_direction	t_direction;
+typedef enum e_axis			t_axis;
+typedef enum e_map_chr		t_map_chr;
+typedef enum e_key_code		t_key_code;
+typedef enum e_event		t_event;
+typedef enum e_event_mask	t_event_mask;
+
+enum e_direction
 {
 	NORTH,
 	SOUTH,
 	WEST,
 	EAST,
 	INIT
-}		t_direction;
+};
 
-typedef enum e_axis
+enum e_axis
 {
 	X_AXIS,
 	Y_AXIS
-}		t_axis;
+};
 
-typedef enum e_map_chr
+enum e_map_chr
 {
 	WALL = '1',
 	EMPTY = '0'
-}		t_map_chr;
+};
+
+enum e_key_code
+{
+	KEY_W = 119,
+	KEY_A = 97,
+	KEY_S = 115,
+	KEY_D = 110,
+	KEY_LEFT_ARROW = 65361,
+	KEY_RIGHT_ARROW = 65363
+};
+
+enum e_event {
+	ON_KEYDOWN = 2,
+	ON_KEYUP = 3,
+	ON_MOUSEDOWN = 4,
+	ON_MOUSEUP = 5,
+	ON_MOUSEMOVE = 6,
+	ON_EXPOSE = 12,
+	ON_DESTROY = 17
+};
+
+enum e_event_mask
+{
+	MASK_NO_EVENT = 0LL,
+	MASK_KEY_PRESS = 1LL << 0
+};
 
 #endif

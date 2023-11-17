@@ -14,6 +14,8 @@ SRCS    = \
 	src/utils/error_msg.c \
 	src/utils/double_abs.c \
 	src/game/game_loop.c \
+	src/game/player_movement.c \
+	src/game/hook.c \
 	src/game/init_player.c \
 	src/parser/check_map.c \
 	src/parser/get_config.c \
