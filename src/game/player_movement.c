@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 01:12:48 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/17 12:29:01 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/17 12:43:09 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "type.h"
 #include <stdio.h>
 
+// W
 void	move_forward(t_world *world)
 {
 	if (world->map[(int)(world->player.precise_pos.y
@@ -24,4 +25,42 @@ void	move_forward(t_world *world)
 		[(int)(world->player.precise_pos.x
 			+ world->player.dir.x * MOVEMENT_SPEED)] != WALL)
 		world->player.precise_pos.x += world->player.dir.x * MOVEMENT_SPEED;
+}
+
+// A
+void	move_leftward(t_world *world)
+{
+	if (world->map[(int)(world->player.precise_pos.y
+			+ world->player.dir.x * MOVEMENT_SPEED)]
+			[(int)world->player.precise_pos.y] != WALL)
+		world->player.precise_pos.y -= world->player.dir.x * MOVEMENT_SPEED;
+	if (world->map[(int)world->player.precise_pos.y]
+		[(int)(world->player.precise_pos.x
+			+ world->player.dir.y * MOVEMENT_SPEED)] != WALL)
+		world->player.precise_pos.x += world->player.dir.y * MOVEMENT_SPEED;
+}
+
+// S
+void	move_backward(t_world *world)
+{
+	if (world->map[(int)(world->player.precise_pos.y
+			+ world->player.dir.y * MOVEMENT_SPEED)]
+			[(int)world->player.precise_pos.y] != WALL)
+		world->player.precise_pos.y -= world->player.dir.y * MOVEMENT_SPEED;
+	if (world->map[(int)world->player.precise_pos.y]
+		[(int)(world->player.precise_pos.x
+			+ world->player.dir.x * MOVEMENT_SPEED)] != WALL)
+		world->player.precise_pos.x -= world->player.dir.x * MOVEMENT_SPEED;
+}
+
+void	move_rightward(t_world *world)
+{
+	if (world->map[(int)(world->player.precise_pos.y
+			+ world->player.dir.x * MOVEMENT_SPEED)]
+			[(int)world->player.precise_pos.y] != WALL)
+		world->player.precise_pos.y += world->player.dir.x * MOVEMENT_SPEED;
+	if (world->map[(int)world->player.precise_pos.y]
+		[(int)(world->player.precise_pos.x
+			+ world->player.dir.y * MOVEMENT_SPEED)] != WALL)
+		world->player.precise_pos.x -= world->player.dir.y * MOVEMENT_SPEED;
 }
