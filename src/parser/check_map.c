@@ -37,18 +37,18 @@ static void	check_start_position(char **map)
 		while (map[row][col] != '\0')
 		{
 			if (is_map_char(map[row][col]) == false)
-				error_exit_msg("mapが間違ってるよ");
+				error_exit_msg("Invalid character in map");
 			if (is_start_char(map[row][col]) == true && start_point == false)
 				start_point = true;
 			else if (is_start_char(map[row][col]) == true \
 					&& start_point == true)
-				error_exit_msg("開始地点が複数ケ所あるよ");
+				error_exit_msg("Multiple starting points in map");
 			col++;
 		}
 		row++;
 	}
 	if (start_point == false)
-		error_exit_msg("start地点が書かれてないよ！");
+		error_exit_msg("No starting point in map");
 }
 
 static bool	is_map_char(char chr)

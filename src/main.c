@@ -22,8 +22,9 @@ int	main(int argc, char *argv[])
 {
 	static t_world	world;
 
+	errno = 0;
 	if (argc != 2)
-		error_exit_msg("引数の数が間違ってるよ");
+		error_exit_msg("Only one argument is allowed");
 	get_config(argv, &world);
 	init_player(&world.player);
 	init_mlx_data(&world.mlx_data);

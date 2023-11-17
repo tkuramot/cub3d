@@ -31,14 +31,14 @@ static void	read_map(int fd, t_world *world, t_list **lst)
 
 	line = read_file(fd);
 	if (line == NULL)
-		error_exit_msg("mapがないよ");
+		error_exit_msg("No map in file");
 	del_newline_code(line);
 	*lst = ft_lstnew(line);
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (errno != 0)
-			error_exit_msg("mallocに失敗してたお");
+			error_exit_msg("malloc error");
 		if (line == NULL)
 			break ;
 		del_newline_code(line);

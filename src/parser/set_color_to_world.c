@@ -41,7 +41,7 @@ void	set_color_to_world(char	*line, t_world *world)
 	else if (ceiling_or_floor == 'F' && world->floor_color == 0)
 		world->floor_color = color;
 	else
-		error_exit_msg("同じ天井・地面の色が複数回指定されているよ");
+		error_exit_msg("A certain color specified multiple times");
 }
 //	ft_dprintf(1, "[%s]\n", line);
 
