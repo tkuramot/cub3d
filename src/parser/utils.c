@@ -27,7 +27,7 @@ char	*read_file(int fd)
 		free(line);
 	}
 	if (errno != 0)
-		error_exit_msg("mallocに失敗してるお");
+		error_exit_msg("malloc error");
 	return (line);
 }
 

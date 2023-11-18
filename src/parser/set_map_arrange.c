@@ -39,19 +39,19 @@ static char	**init_map(int lst_size, int max_len)
 	i = 0;
 	map = (char **) malloc (sizeof(char *) * (lst_size + 1));
 	if (map == NULL)
-		error_exit_msg("すまん、malloc失敗したわ〜");
+		error_exit_msg("malloc error");
 	while (i < lst_size)
 	{
 		map[i] = (char *) malloc (sizeof(char) * (max_len + 1));
 		if (map[i] == NULL)
-			error_exit_msg("すまん、malloc失敗したわ〜");
+			error_exit_msg("malloc error");
 		ft_memset(map[i], ' ', max_len);
 		map[i][max_len] = '\0';
 		i++;
 	}
 	map[lst_size] = (char *) ft_calloc(sizeof(char), max_len + 1);
 	if (map[lst_size] == NULL)
-		error_exit_msg("すまん、malloc失敗したわ〜");
+		error_exit_msg("malloc error");
 	return (map);
 }
 
