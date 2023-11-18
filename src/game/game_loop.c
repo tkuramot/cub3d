@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/15 13:07:49 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/17 00:54:52 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,13 @@
 #include <stdio.h>
 #include <utils.h>
 
-// Unused var
-int	game_loop(void *arg)
+int	game_loop(t_world *world)
 {
-	t_world	*world;
 	t_dda	dda;
 	int		x;
 	double	dist_camera_plane_to_wall;
 	int		line_height;
 
-	world = (t_world *)arg;
 	x = 0;
 	frame_buffer_allocate(&world->mlx_data);
 	while (x < WINDOW_WIDTH)

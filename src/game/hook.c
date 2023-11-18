@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/17 10:24:08 by tkuramot         ###   ########.fr       */
+/*   Created: 2023/11/17 01:12:28 by tkuramot          #+#    #+#             */
+/*   Updated: 2023/11/17 12:43:13 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constant.h"
-#include "cub3d.h"
-#include "drawing.h"
 #include "game.h"
-#include "mlx.h"
+#include "type.h"
 #include <stdio.h>
 
-// TODO Read texture files
-int	main(int argc, char *argv[])
+int	key_hook(int keycode, t_world *world)
 {
-	static t_world	world;
-
-	errno = 0;
-	if (argc != 2)
-		error_exit_msg("Only one argument is allowed");
-	get_config(argv, &world);
-	init_player(&world);
-	init_mlx_data(&world.mlx_data);
-	mlx_hook(world.mlx_data.mlx_win, ON_KEYDOWN, 1LL << 0, key_hook, &world);
-	mlx_loop_hook(world.mlx_data.mlx, game_loop, &world);
-	mlx_loop(world.mlx_data.mlx);
+	if (keycode == KEY_W)
+		move_forward(world);
+	else if (keycode == KEY_A)
+		move_leftward(world);
+	else if (keycode == KEY_S)
+		move_backward(world);
+	else if (keycode == KEY_D)
+		move_rightward(world);
 	return (0);
 }
