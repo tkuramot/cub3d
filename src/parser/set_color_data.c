@@ -24,6 +24,8 @@ void	set_color(int fd, t_world *world)
 	while (i < 2)
 	{
 		line = read_file(fd);
+		if (line == NULL)
+			error_exit_msg("No color data in file");
 		del_newline_code(line);
 		check_color(line);
 		set_color_to_world(line, world);
@@ -42,18 +44,18 @@ static void	check_color(char *line)
 	while (i < 3)
 	{
 		if (ft_isdigit(*line) == 0)
-			error_exit_msg("色の入力形式が間違っているよ！正しいデータを入れてね");
+			error_exit_msg("Invalid format in color input");
 		line = check_mono_color_data(line);
 		i++;
 		if (*line != ',' && i < 3)
-			error_exit_msg("色の入力形式が間違っているよ！正しいデータを入れてね");
+			error_exit_msg("Missing data in color input");
 		line++;
 	}
 	if (i < 3)
-		error_exit_msg("Please 色の頭文字で、データを入れてね");
+		error_exit_msg("Missing data in color input");
 	line = skip_space(line);
 	if (*line != '\0')
-		error_exit_msg("余計なデータが入ってるよ！");
+		error_exit_msg("Extraneous data in color input");
 }
 
 static char	*check_mono_color_data(char *line)
@@ -64,10 +66,8 @@ static char	*check_mono_color_data(char *line)
 	i = 0;
 	while (ft_isdigit(line[i]))
 		i++;
-	if (3 < i)
-		error_exit_msg("0 ~ 255 の間の正しい色のデータを入れてね");
 	mono_color = ft_atoi(line);
-	if (255 < mono_color)
-		error_exit_msg("255以上の値が入力されています");
+	if (3 < i || 255 < mono_color)
+		error_exit_msg("Value greater than 255 in color input");
 	return (line + i);
 }

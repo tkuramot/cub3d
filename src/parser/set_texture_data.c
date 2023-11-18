@@ -25,7 +25,7 @@ void	set_texture(int fd, t_world *world)
 	{
 		line = read_file(fd);
 		if (line == NULL)
-			error_exit_msg("方角のtextureが不足しています");
+			error_exit_msg("Not enough texture");
 		del_newline_code(line);
 		set_texture_to_world(line, world);
 		free(line);
@@ -49,9 +49,9 @@ static void	set_texture_to_world(char *line, t_world *world)
 	else if (direction == EAST && world->texture.east_texture == NULL)
 		world->texture.east_texture = ft_strdup(line);
 	else
-		error_exit_msg("Please 正しい方角のテクスチャ入れてね");
+		error_exit_msg("Please put the correct direction texture");
 	if (errno != 0)
-		error_exit_msg("malloc失敗したよ");
+		error_exit_msg("malloc error");
 }
 //	ft_dprintf(1, "[%d : %s]\n", direction, line);
 

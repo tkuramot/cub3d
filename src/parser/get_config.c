@@ -36,14 +36,14 @@ static int	checke_file_name(char *file)
 
 	line = ft_strrchr(file, '.');
 	if (line == NULL || ft_strcmp(line, ".cub") != 0)
-		error_exit_msg("ファイル名間違ってるよ。");
+		error_exit_msg("Invalid file name");
 	open_fd = open(file, O_DIRECTORY);
 	if (0 < open_fd)
-		error_exit_msg("これ、ディレクトリだよ");
+		error_exit_msg("Is a directory");
 	errno = 0;
 	open_fd = open(file, O_RDONLY);
 	if (open_fd < 0)
-		error_exit_msg("Please enter the correct file");
+		error_exit_msg("Invalid file");
 	return (open_fd);
 }
 //	ft_dprintf(1, "line:%s/file:%s", line, file);
@@ -51,7 +51,6 @@ static int	checke_file_name(char *file)
 static void	print_world(t_world *world)
 {
 	int	i;
-	int	fd;
 
 	ft_dprintf(1, "----- texture -----\n");
 	ft_dprintf(1, "%s\n", world->texture.north_texture);
@@ -68,6 +67,4 @@ static void	print_world(t_world *world)
 		ft_dprintf(1, "|%s|\n", world->map[i]);
 		i++;
 	}
-	fd = open(world->texture.north_texture, O_RDONLY);
-	ft_dprintf(2, "northfileの中身：%s", get_next_line(fd));
 }

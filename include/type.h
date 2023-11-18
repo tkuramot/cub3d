@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 22:12:24 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/13 22:44:07 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/17 01:15:54 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ struct s_dda
 {
 	double	camera_x;
 	t_vec2d	ray_dir;
+	t_vec2i	grid_pos;
 	t_vec2i	next_step_dir;
 	double	ray_len_to_wall_x;
 	double	ray_len_to_wall_y;
@@ -81,7 +82,6 @@ struct s_dda
 
 struct s_player
 {
-	t_vec2i	grid_pos;
 	t_vec2d	precise_pos;
 	t_vec2d	dir;
 	t_vec2d	camera_plane;

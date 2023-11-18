@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 00:59:33 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/13 01:00:00 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/17 12:38:31 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,12 @@
 
 # include "type.h"
 
-void	init_player(t_player *player);
-int		game_loop(void *arg);
+void	init_player(t_world *world);
+int		game_loop(void *world);
+int		key_hook(int keycode, t_world *world);
+void	move_forward(t_world *world);
+void	move_rightward(t_world *world);
+void	move_backward(t_world *world);
+void	move_leftward(t_world *world);
 
 #endif

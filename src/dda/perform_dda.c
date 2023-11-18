@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 00:17:09 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/15 13:04:57 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/17 01:16:37 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ void	perform_dda(t_world *world, t_dda *dda)
 		{
 			dda->ray_len_to_wall_x += dda->ray_len_btw_x_axis;
 			dda->hit_axis = X_AXIS;
-			world->player.grid_pos.x += dda->next_step_dir.x;
+			dda->grid_pos.x += dda->next_step_dir.x;
 		}
 		else
 		{
 			dda->ray_len_to_wall_y += dda->ray_len_btw_y_axis;
 			dda->hit_axis = Y_AXIS;
-			world->player.grid_pos.y += dda->next_step_dir.y;
+			dda->grid_pos.y += dda->next_step_dir.y;
 		}
-		if (world->map[world->player.grid_pos.y][world->player.grid_pos.x]
+		if (world->map[dda->grid_pos.y][dda->grid_pos.x]
 			== WALL)
 			dda->did_hit_wall = true;
 	}

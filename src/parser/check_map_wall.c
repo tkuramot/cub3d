@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_config.c                                       :+:      :+:    :+:   */
+/*   check_map_wall.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: tokazaki <tokazaki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 23:53:38 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/07 17:08:23 by tokazaki         ###   ########.fr       */
+/*   Created: 2023/11/16 23:01:55 by tokazaki          #+#    #+#             */
+/*   Updated: 2023/11/16 23:02:02 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,15 @@ void	check_wall(const char **map)
 static void	search_wall(const char **map, int row, int col)
 {
 	if (row == 0 || col == 0)
-		error_exit_msg("invalid map");
+		error_exit_msg("Invalid map");
 	if (is_valid_in_wall(map[row][col + 1]) == false)
-		error_exit_msg("invalid map");
+		error_exit_msg("Invalid map");
 	if (is_valid_in_wall(map[row][col - 1]) == false)
-		error_exit_msg("invalid map");
+		error_exit_msg("Invalid map");
 	if (is_valid_in_wall(map[row + 1][col]) == false)
-		error_exit_msg("invalid map");
+		error_exit_msg("Invalid map");
 	if (is_valid_in_wall(map[row - 1][col]) == false)
-		error_exit_msg("invalid map");
+		error_exit_msg("Invalid map");
 }
 
 static bool	is_valid_in_wall(char c)
