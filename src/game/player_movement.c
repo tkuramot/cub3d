@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 01:12:48 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/18 12:31:14 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/18 21:35:16 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,14 @@ static void	move_player(t_world *world, double dy, double dx)
 
 	new_y = world->player.precise_pos.y + dy * MOVEMENT_SPEED;
 	new_x = world->player.precise_pos.x + dx * MOVEMENT_SPEED;
-	if (world->map[(int)new_y][(int)world->player.precise_pos.x] != WALL)
+    printf("pos.y%f ;pos.x%f :new.y%f /%f: new.x%f/%F\n", \
+            world->player.precise_pos.y, world->player.precise_pos.x, \
+            new_y, (double)(int)new_y, new_x, (double)(int)new_x);
+	if (world->map[(int)new_y][(int)world->player.precise_pos.x] != WALL \
+            && new_y != (double)(int)new_y)
 		world->player.precise_pos.y = new_y;
-	if (world->map[(int)world->player.precise_pos.y][(int)new_x] != WALL)
+	if (world->map[(int)world->player.precise_pos.y][(int)new_x] != WALL \
+            && new_x != (double)(int)new_x)
 		world->player.precise_pos.x = new_x;
 }
 

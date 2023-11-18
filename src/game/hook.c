@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 01:12:28 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/17 12:43:13 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/18 21:37:34 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,14 @@
 
 int	key_hook(int keycode, t_world *world)
 {
-		if (keycode == 123)
-	{
-			printf("%d\n", keycode);
-	}
-	if (keycode == 124)
-	{
-			printf("%d\n", keycode);
-	}
+	if (keycode == 123)
+		printf("%d\n", keycode);
+    if (keycode == 124)
+		printf("%d\n", keycode);
 	if (keycode == 126)
-	{
-			printf("%d\n", keycode);
-	}
+		printf("%d\n", keycode);
 	if (keycode == 125)
-	{
-			printf("%d\n", keycode);
-	}
+		printf("%d\n", keycode);
 	if (keycode == KEY_W)
 		move_forward(world);
 	else if (keycode == KEY_A)
