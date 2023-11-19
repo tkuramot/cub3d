@@ -6,16 +6,13 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 01:12:28 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/19 20:20:40 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/19 21:29:40 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constant.h"
 #include "game.h"
-#include "parser.h"
 #include "type.h"
-#include "utils.h"
-#include <stdio.h>
 
 int	key_hook(int keycode, t_world *world)
 {
