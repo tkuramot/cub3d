@@ -10,7 +10,7 @@ SRCDIR  = src
 SRCS    = \
 	src/drawing/frame_buffer.c \
 	src/drawing/init_drawing.c \
-	src/drawing/draw_utils.c \
+	src/drawing/drawing.c \
 	src/utils/error_msg.c \
 	src/utils/double_abs.c \
 	src/game/close_window.c \
