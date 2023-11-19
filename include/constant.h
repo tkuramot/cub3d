@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/18 12:31:49 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/19 21:51:34 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ enum e_key_code
 	KEY_A = 97,
 	KEY_S = 115,
 	KEY_D = 100,
+	KEY_ESC = 65307,
 	KEY_LEFT_ARROW = 65361,
 	KEY_RIGHT_ARROW = 65363
 };

@@ -13,6 +13,7 @@ SRCS    = \
 	src/drawing/draw_utils.c \
 	src/utils/error_msg.c \
 	src/utils/double_abs.c \
+	src/game/close_window.c \
 	src/game/game_loop.c \
 	src/game/player_movement.c \
 	src/game/hook.c \
