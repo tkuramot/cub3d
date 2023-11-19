@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 00:59:33 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/17 12:38:31 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/19 20:20:18 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ void	move_forward(t_world *world);
 void	move_rightward(t_world *world);
 void	move_backward(t_world *world);
 void	move_leftward(t_world *world);
+void	move_eye_movement(t_world *world, int rotate_direction);
 
 #endif
