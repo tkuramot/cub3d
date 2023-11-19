@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/17 10:24:08 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/19 22:00:06 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ int	main(int argc, char *argv[])
 	get_config(argv, &world);
 	init_player(&world);
 	init_mlx_data(&world.mlx_data);
-	mlx_hook(world.mlx_data.mlx_win, ON_KEYDOWN, 1LL << 0, key_hook, &world);
+	mlx_hook(world.mlx_data.mlx_win, ON_KEYDOWN,
+		1LL << 0, key_hook, &world);
+	mlx_hook(world.mlx_data.mlx_win, ON_DESTROY,
+		1LL << 17, close_window, &world);
 	mlx_loop_hook(world.mlx_data.mlx, game_loop, &world);
 	mlx_loop(world.mlx_data.mlx);
 	return (0);
