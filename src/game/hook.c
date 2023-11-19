@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 01:12:28 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/19 21:29:40 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/19 21:55:43 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ int	key_hook(int keycode, t_world *world)
 		move_backward(world);
 	else if (keycode == KEY_D)
 		move_rightward(world);
+	else if (keycode == KEY_ESC)
+		close_window(world);
 	return (0);
 }
