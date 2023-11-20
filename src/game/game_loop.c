@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/17 00:54:52 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/20 01:35:05 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ int	game_loop(t_world *world)
 	double	dist_camera_plane_to_wall;
 	int		line_height;
 
+	render_floor(&world->mlx_data, world->floor_color);
+	render_ceiling(&world->mlx_data, world->ceiling_color);
 	x = 0;
-	frame_buffer_allocate(&world->mlx_data);
 	while (x < WINDOW_WIDTH)
 	{
 		prepare_dda(world, &dda, x);
@@ -38,6 +39,5 @@ int	game_loop(t_world *world)
 		x++;
 	}
 	frame_buffer_apply(&world->mlx_data);
-	frame_buffer_destroy(&world->mlx_data);
 	return (0);
 }

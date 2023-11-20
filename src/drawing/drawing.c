@@ -6,10 +6,11 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 01:48:25 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/14 10:26:30 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/20 01:37:41 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "constant.h"
 #include "mlx.h"
 #include "type.h"
 #include <stdio.h>
@@ -59,4 +60,17 @@ void	render_wall_vertical_line(t_mlx_data *mlx_data,
 		line_end = WINDOW_HEIGHT - 1;
 	draw_square(mlx_data,
 		(t_vec2i){x, line_start}, (t_vec2i){x, line_end}, color);
+}
+
+void	render_floor(t_mlx_data *mlx_data, int color)
+{
+	draw_square(mlx_data,
+		(t_vec2i){0, 0}, (t_vec2i){WINDOW_WIDTH, WINDOW_HEIGHT / 2}, color);
+}
+
+void	render_ceiling(t_mlx_data *mlx_data, int color)
+{
+	draw_square(mlx_data,
+		(t_vec2i){0, WINDOW_HEIGHT / 2},
+		(t_vec2i){WINDOW_WIDTH, WINDOW_HEIGHT - 1}, color);
 }
