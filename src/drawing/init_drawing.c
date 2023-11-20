@@ -6,7 +6,11 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/11/26 03:11:52 by tkuramot         ###   ########.fr       */
+=======
+/*   Updated: 2023/11/20 23:53:58 by tkuramot         ###   ########.fr       */
+>>>>>>> 2296370 (Add textures)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +27,14 @@ void	init_mlx_data(t_mlx_data *mlx_data)
 	frame_buffer_allocate(mlx_data);
 }
 
+<<<<<<< HEAD
 void	load_texture(t_texture *texture, t_texture_path *texture_path)
 {
 	(void)texture;
 	(void)texture_path;
 }
+=======
+// void	load_texture(t_texture_data *texture_data, t_texture_path *texture_path)
+// {
+// }
+>>>>>>> 2296370 (Add textures)
