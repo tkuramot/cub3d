@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 22:12:24 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/26 03:10:33 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/26 03:15:32 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ struct s_texture
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-	int		width;
 	int		height;
+	int		width;
 };
 
 struct s_frame_buffer
@@ -74,7 +74,7 @@ struct s_mlx_data
 	void			*mlx;
 	void			*mlx_win;
 	t_frame_buffer	frame_buffer;
-	t_texture		texture;
+	t_texture		textures[NUMBER_OF_BLOCK_FACES];
 };
 
 // DDA stands for digital differential analysis
@@ -118,7 +118,6 @@ struct s_world
 	int				floor_color;
 	int				ceiling_color;
 	t_texture_path	texture_path;
-	t_texture		texture[NUMBER_OF_BLOCK_FACES];
 	t_mlx_data		mlx_data;
 	t_player		player;
 	t_key_press		key_press;

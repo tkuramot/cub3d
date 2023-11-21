@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/20 01:33:50 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/21 11:56:22 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "type.h"
 
-void	init_mlx_data(t_mlx_data *mlx_data);
+void	init_mlx_data(t_world *world);
 void	frame_buffer_allocate(t_mlx_data *mlx_data);
 void	frame_buffer_apply(t_mlx_data *mlx_data);
 void	frame_buffer_destroy(t_mlx_data *mlx_data);
