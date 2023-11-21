@@ -17,6 +17,7 @@ SRCS    = \
 	src/game/game_loop.c \
 	src/game/player_movement.c \
 	src/game/hook.c \
+    src/game/rotate_view_direction.c \
 	src/game/init_player.c \
 	src/parser/check_map.c \
 	src/parser/get_config.c \
