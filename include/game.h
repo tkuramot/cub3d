@@ -22,7 +22,7 @@ void	move_forward(t_world *world);
 void	move_rightward(t_world *world);
 void	move_backward(t_world *world);
 void	move_leftward(t_world *world);
-void	move_eye_movement(t_world *world, int rotate_direction);
+void	rotate_view_direction(t_world *world, int rotate_direction);
 int		close_window(t_world *world);
 
 #endif

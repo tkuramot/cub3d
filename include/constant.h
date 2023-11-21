@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/19 21:51:34 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/21 13:36:59 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ enum e_axis
 {
 	X_AXIS,
 	Y_AXIS
+};
+
+enum e_rotate
+{
+	LEFT = -1,
+	RIGHT = 1
 };
 
 enum e_map_chr

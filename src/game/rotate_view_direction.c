@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   eye_movement.c                                     :+:      :+:    :+:   */
+/*   rotate_view_direction.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tokazaki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -24,22 +24,12 @@ static void	rotate_vector(t_vec2d *v, double angle)
 	v->y = temp_x * sin(angle) + v->y * cos(angle);
 }
 
-static void	rotate_camera_plane(t_vec2d *camera_plane, double angle)
-{
-	double	temp_x;
-
-	temp_x = camera_plane->x;
-	camera_plane->x = camera_plane->x * cos(angle) \
-		- camera_plane->y * sin(angle);
-	camera_plane->y = temp_x * sin(angle) + camera_plane->y * cos(angle);
-}
-
-void	move_eye_movement(t_world *world, int rotate_direction)
+void	rotate_view_direction(t_world *world, int rotate_direction)
 {
 	double	rotate_dir;
 
 	rotate_dir = ROTATE_SPEED * rotate_direction;
 	rotate_vector(&world->player.dir, rotate_dir);
-	rotate_camera_plane(&world->player.camera_plane, rotate_dir);
+	rotate_vector(&world->player.camera_plane, rotate_dir);
 }
 //ft_dprintf(2, "dir.x:%f dir.y:%f\n",world->player.dir.x, world->player.dir.y);
