@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/22 02:07:15 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/22 02:50:40 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 # define WINDOW_HEIGHT 720
 # define INFINITY INT_MAX
 # define MOVEMENT_SPEED 0.3
-# define ROTATE_MOUSE_SPEED 0.02
 # define ROTATE_KEY_SPEED 0.06
+# define ROTATE_MOUSE_SPEED 0.02
+# define MOVEMENT_LIMIT 50
 
 typedef enum e_direction	t_direction;
 typedef enum e_axis			t_axis;

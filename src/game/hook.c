@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 01:12:28 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/22 02:19:27 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/22 02:51:04 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ int	mouse_hook(int x, int y, t_world *world)
 	int	x_diff;
 
 	x_diff = x - world->player.old_x;
-	if (0 < x_diff && x_diff < 50)
+	if (0 < x_diff && x_diff < MOVEMENT_LIMIT)
 		rotate_view_direction(world, ROTATE_MOUSE_SPEED * x_diff);
-	else if (-50 < x_diff && x_diff < 0)
+	else if (-MOVEMENT_LIMIT < x_diff && x_diff < 0)
 		rotate_view_direction(world, ROTATE_MOUSE_SPEED * x_diff);
 	world->player.old_x = x;
 	return (0);
