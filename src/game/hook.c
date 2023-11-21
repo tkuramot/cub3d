@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 01:12:28 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/22 02:07:18 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/22 02:19:27 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	key_hook(int keycode, t_world *world)
 	return (0);
 }
 
-int  mouse_hook(int x, int y, t_world *world)
+int	mouse_hook(int x, int y, t_world *world)
 {
 	int	x_diff;
 
@@ -43,6 +43,6 @@ int  mouse_hook(int x, int y, t_world *world)
 	else if (-50 < x_diff && x_diff < 0)
 		rotate_view_direction(world, ROTATE_MOUSE_SPEED * x_diff);
 	world->player.old_x = x;
-	(void)y;
 	return (0);
+	(void)y;
 }
