@@ -6,7 +6,7 @@
 /*   By: tokazaki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:46:31 by tokazaki          #+#    #+#             */
-/*   Updated: 2023/11/08 19:48:45 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/22 02:35:49 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	set_color_to_world(char	*line, t_world *world)
 	else
 		error_exit_msg("A certain color specified multiple times");
 }
-//	ft_dprintf(1, "[%s]\n", line);
 
 static int	create_rgb(int red, int green, int blue)
 {

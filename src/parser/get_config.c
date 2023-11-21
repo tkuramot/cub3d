@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 23:53:38 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/15 15:02:05 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/22 02:37:24 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static int	checke_file_name(char *file)
 		error_exit_msg("Invalid file");
 	return (open_fd);
 }
-//	ft_dprintf(1, "line:%s/file:%s", line, file);
 
 static void	print_world(t_world *world)
 {

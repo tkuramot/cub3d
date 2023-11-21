@@ -6,7 +6,7 @@
 /*   By: tokazaki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:08:06 by tokazaki          #+#    #+#             */
-/*   Updated: 2023/11/08 14:32:15 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/22 02:36:15 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	set_texture(int fd, t_world *world)
 		i++;
 	}
 }
-//	ft_dprintf(1, "-----set_texture-----\n");
 
 static void	set_texture_to_world(char *line, t_world *world)
 {
@@ -53,7 +52,6 @@ static void	set_texture_to_world(char *line, t_world *world)
 	if (errno != 0)
 		error_exit_msg("malloc error");
 }
-//	ft_dprintf(1, "[%d : %s]\n", direction, line);
 
 static int	check_direction(char *line)
 {

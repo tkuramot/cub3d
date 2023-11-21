@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/22 02:01:50 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/22 02:34:02 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 #include "drawing.h"
 #include "game.h"
 #include "mlx.h"
-#include "type.h"
-#include "libft.h"
 #include <stdio.h>
 
 // TODO Read texture files
