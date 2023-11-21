@@ -63,6 +63,9 @@ fclean: clean
 .PHONY: re
 re: fclean all
 
+.PHONY: bonus
+bonus: all
+
 .PHONY: debug
 debug:
 	make DEBUG=1

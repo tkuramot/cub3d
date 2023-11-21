@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/19 22:00:06 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/22 02:01:50 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include "drawing.h"
 #include "game.h"
 #include "mlx.h"
+#include "type.h"
+#include "libft.h"
 #include <stdio.h>
 
 // TODO Read texture files
@@ -32,6 +34,8 @@ int	main(int argc, char *argv[])
 		1LL << 0, key_hook, &world);
 	mlx_hook(world.mlx_data.mlx_win, ON_DESTROY,
 		1LL << 17, close_window, &world);
+	mlx_hook(world.mlx_data.mlx_win, ON_MOUSEMOVE,
+		1L << 6, mouse_hook, &world);
 	mlx_loop_hook(world.mlx_data.mlx, game_loop, &world);
 	mlx_loop(world.mlx_data.mlx);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: tokazaki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 16:52:39 by tokazaki          #+#    #+#             */
-/*   Updated: 2023/11/19 21:56:53 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/22 01:40:26 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,8 @@ static void	rotate_vector(t_vec2d *v, double angle)
 	v->y = temp_x * sin(angle) + v->y * cos(angle);
 }
 
-void	rotate_view_direction(t_world *world, int rotate_direction)
+void	rotate_view_direction(t_world *world, double rotate_dir)
 {
-	double	rotate_dir;
-
-	rotate_dir = ROTATE_SPEED * rotate_direction;
 	rotate_vector(&world->player.dir, rotate_dir);
 	rotate_vector(&world->player.camera_plane, rotate_dir);
 }
