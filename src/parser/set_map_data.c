@@ -6,7 +6,7 @@
 /*   By: tokazaki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:08:38 by tokazaki          #+#    #+#             */
-/*   Updated: 2023/11/08 20:05:32 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/22 02:37:01 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	set_map(int fd, t_world *world)
 	ft_lstclear(&lst, free);
 }
 
-//mapを読み込んで、線形リストにする
 static void	read_map(int fd, t_world *world, t_list **lst)
 {
 	char	*line;
