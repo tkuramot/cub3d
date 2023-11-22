@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 22:12:24 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/22 02:18:12 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/22 18:56:17 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ struct s_player
 	t_vec2d	precise_pos;
 	t_vec2d	dir;
 	t_vec2d	camera_plane;
-	int		old_x;
+	t_vec2i	pre_cursor_position;
 };
 
 struct s_world
