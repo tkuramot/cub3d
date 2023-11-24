@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/20 01:35:05 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/25 05:19:20 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "libft.h"
 #include "mlx.h"
 #include "type.h"
+#include <stdint.h>
 #include <stdio.h>
 #include <utils.h>
 
@@ -28,6 +29,9 @@ void	move_forward_left(t_world *world);
 void	move_backward_right(t_world *world);
 void	move_backward_left(t_world *world);
 void	rotate_view_direction(t_world *world, double rotate_dir);
+
+void	my_mlx_pixel_put(t_frame_buffer *frame_buffer,
+				int x, int y, int color);
 
 void	key_handler(t_world *world)
 {
@@ -53,6 +57,148 @@ void	key_handler(t_world *world)
 		move_rightward(world);
 }
 
+
+void translucent_my_mlx_pixel_put(t_frame_buffer *frame_buffer,
+                                   int x, int y, int color)
+{
+    char *dst;
+
+    // 画像データの先頭アドレス + y行目 * 1行あたりのバイト数 + xピクセル目 * ピクセルあたりのバイト数
+    dst = frame_buffer->addr + (y * frame_buffer->line_length + x * (frame_buffer->bits_per_pixel / 8));
+
+    // 既存の色
+    unsigned int *existing_color = (unsigned int *)dst;
+
+    // 新しい色を既存の色に対して重みづけして混ぜる
+    int alpha = 190;  // 重みづけの係数 (0から255の範囲で調整可能)
+    int new_red = (color >> 16) & 0xFF;
+    int new_green = (color >> 8) & 0xFF;
+    int new_blue = color & 0xFF;
+
+    int existing_red = (*existing_color >> 16) & 0xFF;
+    int existing_green = (*existing_color >> 8) & 0xFF;
+    int existing_blue = (*existing_color) & 0xFF;
+
+    // 新しい色を既存の色に対して重みづけして混ぜる
+    int blended_red = (existing_red * (255 - alpha) + new_red * alpha) / 255;
+    int blended_green = (existing_green * (255 - alpha) + new_green * alpha) / 255;
+    int blended_blue = (existing_blue * (255 - alpha) + new_blue * alpha) / 255;
+
+    // ブレンディングされたRGB成分をセット
+    *existing_color = (blended_red << 16) | (blended_green << 8) | blended_blue | (255 << 24);  // アルファは不透明として設定
+}
+
+#include <math.h>
+void draw_circle(t_world *world, int center, int radius, int color) {
+	int	angle;
+	int	x;
+	int	y;
+
+	angle = 0;
+	while (angle < 360)
+	{
+		double radian = angle * M_PI / 180.0;
+		x = center + (int)(radius * cos(radian));
+		y = center + (int)(radius * sin(radian));
+		my_mlx_pixel_put(&world->mlx_data.frame_buffer, x, y, color);
+		angle++;
+	}
+}
+
+void	render_wall_brock(t_world *world, int i, int j)
+{
+	int k;
+	int l;
+
+	k = 12;
+	while (k < 17)
+	{
+		l = 12;
+		while (l < 17)
+		{
+			translucent_my_mlx_pixel_put(&world->mlx_data.frame_buffer, i * 10 + k, j * 10 + l, 0xFFFFFF);
+			l++;
+		}
+		k++;
+	}
+}
+
+void	render_map(t_world *world)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (world->map[i] != NULL)
+	{
+		j = 0;
+		while (world->map[i][j] != '\0')
+		{
+			if (world->map[i][j] == WALL)
+				render_wall_brock(world, j, i);
+			j++;
+		}
+		i++;
+	}
+}
+
+//void translucent_my_mlx_pixel_put(t_frame_buffer *frame_buffer,
+//                                   int x, int y, int color)
+//{
+//    char *dst;
+//
+//    // 画像データの先頭アドレス + y行目 * 1行あたりのバイト数 + xピクセル目 * ピクセルあたりのバイト数
+//    dst = frame_buffer->addr + (y * frame_buffer->line_length + x * (frame_buffer->bits_per_pixel / 8));
+//
+//    // 既存の色
+//    unsigned int *existing_color = (unsigned int *)dst;
+//
+//    // 新しい色を既存の色と単純に混ぜ合わせる
+//    *existing_color = ((*existing_color + color) / 2);
+//}
+
+
+void	render_map_base(t_world *world)
+{
+	int	i;
+	int	j;
+
+	i = 5;
+	while (i < world->width * 10 + 15)
+	{
+		j = 5;
+		while (j < world->height * 10 + 15)
+		{
+			translucent_my_mlx_pixel_put(&world->mlx_data.frame_buffer, i, j, 0xfff462);
+			j++;
+		}
+		i++;
+	}
+}
+
+void	render_player(t_world *world)
+{
+	int i;
+	int j;
+	int x;
+	int y;
+
+	x = world->player.precise_pos.x * 10;
+	y = world->player.precise_pos.y * 10;
+	i = 8;
+	while (i < 12)
+	{	
+		j = 8;
+		while (j < 12)
+		{
+			my_mlx_pixel_put(&world->mlx_data.frame_buffer, x + i, y + j, 0x0);
+			j++;
+		}
+		i++;
+	}
+}
+
+
 int	game_loop(t_world *world)
 {
 	t_dda	dda;
@@ -73,6 +219,14 @@ int	game_loop(t_world *world)
 		render_wall_vertical_line(&world->mlx_data, x, line_height, 0X00FF0000);
 		x++;
 	}
+	render_map_base(world);
+	render_map(world);
+//    draw_circle(world, 100, 90, 0xFFFFFF);
+//    draw_circle(world, 100, 91, 0xFFFFFF);
+//    draw_circle(world, 100, 92, 0xFFFFFF);
+//    draw_circle(world, 100, 95, 0xFFFFFF);
+	render_player(world);
+
 	frame_buffer_apply(&world->mlx_data);
 	return (0);
 }
