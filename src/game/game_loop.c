@@ -19,6 +19,40 @@
 #include <stdio.h>
 #include <utils.h>
 
+void	move_forward(t_world *world);
+void	move_rightward(t_world *world);
+void	move_backward(t_world *world);
+void	move_leftward(t_world *world);
+void	move_forward_right(t_world *world);
+void	move_forward_left(t_world *world);
+void	move_backward_right(t_world *world);
+void	move_backward_left(t_world *world);
+void	rotate_view_direction(t_world *world, double rotate_dir);
+
+void	key_handler(t_world *world)
+{
+	if (world->key_press.is_left_arrow)
+		rotate_view_direction(world, LEFT * ROTATE_KEY_SPEED);
+	if (world->key_press.is_right_arrow)
+		rotate_view_direction(world, RIGHT * ROTATE_KEY_SPEED);
+	if (world->key_press.is_w && world->key_press.is_d)
+		move_forward_right(world);
+	else if (world->key_press.is_w && world->key_press.is_a)
+		move_forward_left(world);
+	else if (world->key_press.is_s && world->key_press.is_d)
+		move_backward_right(world);
+	else if (world->key_press.is_s && world->key_press.is_a)
+		move_backward_left(world);
+	else if (world->key_press.is_w)
+		move_forward(world);
+	else if (world->key_press.is_a)
+		move_leftward(world);
+	else if (world->key_press.is_s)
+		move_backward(world);
+	else if (world->key_press.is_d)
+		move_rightward(world);
+}
+
 int	game_loop(t_world *world)
 {
 	t_dda	dda;
@@ -26,6 +60,7 @@ int	game_loop(t_world *world)
 	double	dist_camera_plane_to_wall;
 	int		line_height;
 
+	key_handler(world);
 	render_floor(&world->mlx_data, world->floor_color);
 	render_ceiling(&world->mlx_data, world->ceiling_color);
 	x = 0;

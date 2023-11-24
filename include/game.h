@@ -17,12 +17,10 @@
 
 void	init_player(t_world *world);
 int		game_loop(void *world);
-int		key_hook(int keycode, t_world *world);
+int		key_hook_down(int keycode, t_world *world);
+int		key_hook_up(int keycode, t_world *world);
 int		mouse_hook(int x, int y, t_world *world);
-void	move_forward(t_world *world);
-void	move_rightward(t_world *world);
-void	move_backward(t_world *world);
-void	move_leftward(t_world *world);
+void	move_player(t_world *world, double dy, double dx);
 void	rotate_view_direction(t_world *world, double rotate_dir);
 int		close_window(t_world *world);
 

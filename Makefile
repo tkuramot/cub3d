@@ -8,29 +8,30 @@ INCLUDE = -I./include -I./lib/libft/include -I./lib/minilibx-linux \
 NAME    = cub3D
 SRCDIR  = src
 SRCS    = \
+	src/dda/perform_dda.c \
+	src/dda/prepare_dda.c \
+	src/drawing/drawing.c \
 	src/drawing/frame_buffer.c \
 	src/drawing/init_drawing.c \
-	src/drawing/drawing.c \
-	src/utils/error_msg.c \
-	src/utils/double_abs.c \
 	src/game/close_window.c \
 	src/game/game_loop.c \
-	src/game/player_movement.c \
 	src/game/hook.c \
-    src/game/rotate_view_direction.c \
 	src/game/init_player.c \
+	src/game/player_movement.c \
+	src/game/player_movement_diagonal.c \
+	src/game/rotate_view_direction.c \
+	src/main.c \
 	src/parser/check_map.c \
-	src/parser/get_config.c \
-	src/parser/utils.c \
-	src/parser/set_color_data.c \
 	src/parser/check_map_wall.c \
-	src/parser/set_texture_data.c \
+	src/parser/get_config.c \
+	src/parser/set_color_data.c \
+	src/parser/set_color_to_world.c \
 	src/parser/set_map_arrange.c \
 	src/parser/set_map_data.c \
-	src/parser/set_color_to_world.c \
-	src/main.c \
-	src/dda/perform_dda.c \
-	src/dda/prepare_dda.c
+	src/parser/set_texture_data.c \
+	src/parser/utils.c \
+	src/utils/double_abs.c \
+	src/utils/error_msg.c
 OBJDIR  = obj
 OBJS    = $(subst $(SRCDIR), $(OBJDIR), $(SRCS:.c=.o))
 DEPENDS = $(OBJS:.o=.d)

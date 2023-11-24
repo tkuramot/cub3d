@@ -25,6 +25,7 @@ typedef struct s_tecture		t_texture;
 typedef struct s_mlx_data		t_mlx_data;
 typedef struct s_dda			t_dda;
 typedef struct s_player			t_player;
+typedef struct s_key_press		t_key_press;
 typedef struct s_world			t_world;
 
 struct s_vec2d
@@ -88,6 +89,16 @@ struct s_player
 	t_vec2i	pre_cursor_position;
 };
 
+struct s_key_press
+{
+	bool	is_w;
+	bool	is_a;
+	bool	is_s;
+	bool	is_d;
+	bool	is_left_arrow;
+	bool	is_right_arrow;
+};
+
 struct s_world
 {
 	char		**map;
@@ -98,6 +109,7 @@ struct s_world
 	t_texture	texture;
 	t_mlx_data	mlx_data;
 	t_player	player;
+	t_key_press	key_press;
 };
 
 #endif

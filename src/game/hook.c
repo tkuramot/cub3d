@@ -13,22 +13,42 @@
 #include "constant.h"
 #include "game.h"
 #include "type.h"
+#include <stdio.h>
 
-int	key_hook(int keycode, t_world *world)
+int	key_hook_down(int keycode, t_world *world)
 {
 	if (keycode == KEY_LEFT_ARROW)
-		rotate_view_direction(world, LEFT * ROTATE_KEY_SPEED);
-	else if (keycode == KEY_RIGHT_ARROW)
-		rotate_view_direction(world, RIGHT * ROTATE_KEY_SPEED);
-	else if (keycode == KEY_W)
-		move_forward(world);
-	else if (keycode == KEY_A)
-		move_leftward(world);
-	else if (keycode == KEY_S)
-		move_backward(world);
-	else if (keycode == KEY_D)
-		move_rightward(world);
-	else if (keycode == KEY_ESC)
+		world->key_press.is_left_arrow = true;
+	if (keycode == KEY_RIGHT_ARROW)
+		world->key_press.is_right_arrow = true;
+	if (keycode == KEY_W)
+		world->key_press.is_w = true;
+	if (keycode == KEY_A)
+		world->key_press.is_a = true;
+	if (keycode == KEY_S)
+		world->key_press.is_s = true;
+	if (keycode == KEY_D)
+		world->key_press.is_d = true;
+	if (keycode == KEY_ESC)
+		close_window(world);
+	return (0);
+}
+
+int	key_hook_up(int keycode, t_world *world)
+{
+	if (keycode == KEY_LEFT_ARROW)
+		world->key_press.is_left_arrow = false;
+	if (keycode == KEY_RIGHT_ARROW)
+		world->key_press.is_right_arrow = false;
+	if (keycode == KEY_W)
+		world->key_press.is_w = false;
+	if (keycode == KEY_A)
+		world->key_press.is_a = false;
+	if (keycode == KEY_S)
+		world->key_press.is_s = false;
+	if (keycode == KEY_D)
+		world->key_press.is_d = false;
+	if (keycode == KEY_ESC)
 		close_window(world);
 	return (0);
 }
