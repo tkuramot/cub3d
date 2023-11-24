@@ -29,7 +29,9 @@ int	main(int argc, char *argv[])
 	init_player(&world);
 	init_mlx_data(&world.mlx_data);
 	mlx_hook(world.mlx_data.mlx_win, ON_KEYDOWN,
-		1LL << 0, key_hook, &world);
+		1LL << 0, key_hook_down, &world);
+	mlx_hook(world.mlx_data.mlx_win, ON_KEYUP,
+		1LL << 1, key_hook_up, &world);
 	mlx_hook(world.mlx_data.mlx_win, ON_DESTROY,
 		1LL << 17, close_window, &world);
 	mlx_hook(world.mlx_data.mlx_win, ON_MOUSEMOVE,

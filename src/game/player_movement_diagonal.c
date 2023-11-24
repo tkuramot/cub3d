@@ -10,45 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "constant.h"
+#include "game.h"
 #include "type.h"
-#include <stdio.h>
 
-void	move_player(t_world *world, double dy, double dx)
+void	move_forward_right(t_world *world)
 {
-	double	new_y;
-	double	new_x;
-
-	new_y = world->player.precise_pos.y + dy * MOVEMENT_SPEED;
-	new_x = world->player.precise_pos.x + dx * MOVEMENT_SPEED;
-	if (world->map[(int)(new_y + dy / 100)][(int)world->player.precise_pos.x] \
-		!= WALL)
-		world->player.precise_pos.y = new_y;
-	if (world->map[(int)world->player.precise_pos.y][(int)(new_x + dx / 100)] \
-		!= WALL)
-		world->player.precise_pos.x = new_x;
+	move_player(world, world->player.dir.y + world->player.dir.x,
+		world->player.dir.x - world->player.dir.y);
 }
 
-// W
-void	move_forward(t_world *world)
+void	move_forward_left(t_world *world)
 {
-	move_player(world, world->player.dir.y, world->player.dir.x);
+	move_player(world, world->player.dir.y - world->player.dir.x,
+		world->player.dir.x + world->player.dir.y);
 }
 
-// A
-void	move_leftward(t_world *world)
+void	move_backward_right(t_world *world)
 {
-	move_player(world, -world->player.dir.x, world->player.dir.y);
+	move_player(world, -world->player.dir.y + world->player.dir.x,
+		-world->player.dir.x - world->player.dir.y);
 }
 
-// S
-void	move_backward(t_world *world)
+void	move_backward_left(t_world *world)
 {
-	move_player(world, -world->player.dir.y, -world->player.dir.x);
-}
-
-//D
-void	move_rightward(t_world *world)
-{
-	move_player(world, world->player.dir.x, -world->player.dir.y);
+	move_player(world, -world->player.dir.y - world->player.dir.x,
+		-world->player.dir.x + world->player.dir.y);
 }
