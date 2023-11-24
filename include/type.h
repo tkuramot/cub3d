@@ -16,7 +16,6 @@
 # include "constant.h"
 # include <inttypes.h>
 # include <limits.h>
-#include <signal.h>
 # include <stdbool.h>
 
 typedef struct s_vec2i			t_vec2i;
