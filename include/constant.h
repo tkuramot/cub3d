@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/22 02:50:40 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/26 03:10:24 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define ROTATE_KEY_SPEED 0.05
 # define ROTATE_MOUSE_SPEED 0.02
 # define MOVEMENT_LIMIT 50
+# define NUMBER_OF_BLOCK_FACES 4
 
 typedef enum e_direction	t_direction;
 typedef enum e_axis			t_axis;

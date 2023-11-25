@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 23:53:38 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/22 02:37:24 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/26 03:04:45 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ static void	print_world(t_world *world)
 	int	i;
 
 	ft_dprintf(1, "----- texture -----\n");
-	ft_dprintf(1, "%s\n", world->texture.north_texture);
-	ft_dprintf(1, "%s\n", world->texture.south_texture);
-	ft_dprintf(1, "%s\n", world->texture.west_texture);
-	ft_dprintf(1, "%s\n", world->texture.east_texture);
+	ft_dprintf(1, "%s\n", world->texture_path.north_texture);
+	ft_dprintf(1, "%s\n", world->texture_path.south_texture);
+	ft_dprintf(1, "%s\n", world->texture_path.west_texture);
+	ft_dprintf(1, "%s\n", world->texture_path.east_texture);
 	ft_dprintf(1, "\n----- color -----\n");
 	ft_dprintf(1, "[Floor: %x]\n", world->floor_color);
 	ft_dprintf(1, "[Ceiling: %x]\n", world->ceiling_color);
