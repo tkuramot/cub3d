@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/25 05:19:20 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/26 01:35:26 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void translucent_my_mlx_pixel_put(t_frame_buffer *frame_buffer,
     unsigned int *existing_color = (unsigned int *)dst;
 
     // 新しい色を既存の色に対して重みづけして混ぜる
-    int alpha = 190;  // 重みづけの係数 (0から255の範囲で調整可能)
+    int alpha = 200;  // 重みづけの係数 (0から255の範囲で調整可能)
     int new_red = (color >> 16) & 0xFF;
     int new_green = (color >> 8) & 0xFF;
     int new_blue = color & 0xFF;
@@ -109,14 +109,21 @@ void	render_wall_brock(t_world *world, int i, int j)
 {
 	int k;
 	int l;
+	int x;
+	int y;
 
+	x = (world->width - world->player.precise_pos.x) * 10;
+	y = (world->height - world->player.precise_pos.y) * 10;
 	k = 12;
 	while (k < 17)
 	{
 		l = 12;
 		while (l < 17)
 		{
-			translucent_my_mlx_pixel_put(&world->mlx_data.frame_buffer, i * 10 + k, j * 10 + l, 0xFFFFFF);
+			if (0 < i + k + x - 100 && 0 < j + l + y -100)
+			{
+				translucent_my_mlx_pixel_put(&world->mlx_data.frame_buffer, i + k + x - 100, j + l + y - 100, 0xFFFFFF);
+			}
 			l++;
 		}
 		k++;
@@ -135,7 +142,7 @@ void	render_map(t_world *world)
 		while (world->map[i][j] != '\0')
 		{
 			if (world->map[i][j] == WALL)
-				render_wall_brock(world, j, i);
+				render_wall_brock(world, j * 10, i * 10);
 			j++;
 		}
 		i++;
@@ -162,36 +169,61 @@ void	render_map_base(t_world *world)
 {
 	int	i;
 	int	j;
+	int x;
+	int y;
 
+	x = (world->width - world->player.precise_pos.x) * 10;
+	y = (world->height - world->player.precise_pos.y) * 10;
 	i = 5;
 	while (i < world->width * 10 + 15)
 	{
 		j = 5;
 		while (j < world->height * 10 + 15)
 		{
-			translucent_my_mlx_pixel_put(&world->mlx_data.frame_buffer, i, j, 0xfff462);
+			if (0 < i + x - 100 && 0 < j +  y -100)
+			{
+				translucent_my_mlx_pixel_put(&world->mlx_data.frame_buffer, i + x - 100, j + y - 100, 0xfff462);
+			}
 			j++;
 		}
 		i++;
 	}
 }
 
+//void	render_player(t_world *world)
+//{
+//	int i;
+//	int j;
+//	int x;
+//	int y;
+//
+//	x = world->player.precise_pos.x * 10;
+//	y = world->player.precise_pos.y * 10;
+//	i = 8;
+//	while (i < 12)
+//	{	
+//		j = 8;
+//		while (j < 12)
+//		{
+//			my_mlx_pixel_put(&world->mlx_data.frame_buffer, x + i, y + j, 0x0);
+//			j++;
+//		}
+//		i++;
+//	}
+//}
+
 void	render_player(t_world *world)
 {
-	int i;
-	int j;
-	int x;
-	int y;
+	int	i;
+	int	j;
 
-	x = world->player.precise_pos.x * 10;
-	y = world->player.precise_pos.y * 10;
-	i = 8;
-	while (i < 12)
-	{	
-		j = 8;
-		while (j < 12)
+	i = 0;
+	while (i < 5)
+	{
+		j = 0;
+		while (j < 5)
 		{
-			my_mlx_pixel_put(&world->mlx_data.frame_buffer, x + i, y + j, 0x0);
+			my_mlx_pixel_put(&world->mlx_data.frame_buffer, world->width * 10 - 2 + i + 10 - 100, world->height * 10 - 2 + j + 10 - 100, 0x0);
 			j++;
 		}
 		i++;
