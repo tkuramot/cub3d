@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_utils.c                                       :+:      :+:    :+:   */
+/*   drawing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 01:48:25 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/20 01:37:41 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/27 00:30:50 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 #include "type.h"
 #include <stdio.h>
 
-static void	my_mlx_pixel_put(t_frame_buffer *frame_buffer,
-				int x, int y, int color)
+void	my_mlx_pixel_put(t_frame_buffer *frame_buffer,
+				int y, int x, int color)
 {
 	char	*dst;
 
@@ -39,7 +39,7 @@ void	draw_square(t_mlx_data *mlx_data, t_vec2i start, t_vec2i end, int color)
 		x = start.x;
 		while (x <= end.x)
 		{
-			my_mlx_pixel_put(&mlx_data->frame_buffer, x, y, color);
+			my_mlx_pixel_put(&mlx_data->frame_buffer, y, x, color);
 			x++;
 		}
 		y++;

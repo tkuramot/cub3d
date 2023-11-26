@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 22:12:24 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/26 15:42:08 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/26 23:21:52 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ struct s_dda
 	double		ray_len_btw_x_axis;
 	double		ray_len_btw_y_axis;
 	bool		did_hit_wall;
-	t_axis		hit_axis;
 	t_direction	hit_side;
 };
 

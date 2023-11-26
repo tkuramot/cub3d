@@ -1,7 +1,7 @@
-WE ./texture/animal_okojo_summer.xpm
-NO ./texture/animal_oomimigitsune.xpm
-SO ./texture/hamster_sleeping_golden.xpm
-EA ./texture/animal_wallaby_kangaroo.xpm
+WE ./texture/player1.xpm
+NO ./texture/player1.xpm
+SO ./texture/player1.xpm
+EA ./texture/player1.xpm
 
 F 221,238,255
 C 170,187,238
