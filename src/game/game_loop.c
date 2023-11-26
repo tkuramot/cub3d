@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/27 00:28:05 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/27 00:39:52 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ void	render_textured_wall_vertical_line(t_world *world, t_dda *dda, t_texture *t
 	double	wall_x;
 
 	if (dda->hit_side == WEST || dda->hit_side == EAST)
-		wall_x = world->player.precise_pos.y * dist_camera_plane_to_wall;
+		wall_x = world->player.precise_pos.y + dist_camera_plane_to_wall * dda->ray_dir.y;
 	else
-		wall_x = world->player.precise_pos.x * dist_camera_plane_to_wall;
+		wall_x = world->player.precise_pos.x + dist_camera_plane_to_wall * dda->ray_dir.x;
 	wall_x -= floor(wall_x);
 
 	int		texture_x;
