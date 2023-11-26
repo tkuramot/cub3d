@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 22:12:24 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/26 03:15:32 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/26 15:42:08 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,16 +80,17 @@ struct s_mlx_data
 // DDA stands for digital differential analysis
 struct s_dda
 {
-	double	camera_x;
-	t_vec2d	ray_dir;
-	t_vec2i	grid_pos;
-	t_vec2i	next_step_dir;
-	double	ray_len_to_wall_x;
-	double	ray_len_to_wall_y;
-	double	ray_len_btw_x_axis;
-	double	ray_len_btw_y_axis;
-	bool	did_hit_wall;
-	t_axis	hit_axis;
+	double		camera_x;
+	t_vec2d		ray_dir;
+	t_vec2i		grid_pos;
+	t_vec2i		next_step_dir;
+	double		ray_len_to_wall_x;
+	double		ray_len_to_wall_y;
+	double		ray_len_btw_x_axis;
+	double		ray_len_btw_y_axis;
+	bool		did_hit_wall;
+	t_axis		hit_axis;
+	t_direction	hit_side;
 };
 
 struct s_player

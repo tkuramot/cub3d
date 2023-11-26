@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 00:17:09 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/17 01:16:37 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/26 15:46:29 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,20 @@ void	perform_dda(t_world *world, t_dda *dda)
 		if (dda->ray_len_to_wall_x < dda->ray_len_to_wall_y)
 		{
 			dda->ray_len_to_wall_x += dda->ray_len_btw_x_axis;
-			dda->hit_axis = X_AXIS;
 			dda->grid_pos.x += dda->next_step_dir.x;
+			if (dda->ray_dir.x < 0)
+				dda->hit_side = EAST;
+			else
+				dda->hit_side = WEST;
 		}
 		else
 		{
 			dda->ray_len_to_wall_y += dda->ray_len_btw_y_axis;
-			dda->hit_axis = Y_AXIS;
 			dda->grid_pos.y += dda->next_step_dir.y;
+			if (dda->ray_dir.y < 0)
+				dda->hit_side = NORTH;
+			else
+				dda->hit_side = SOUTH;
 		}
 		if (world->map[dda->grid_pos.y][dda->grid_pos.x]
 			== WALL)
@@ -38,7 +44,7 @@ void	perform_dda(t_world *world, t_dda *dda)
 
 double	get_dist_camera_plane_to_wall(t_dda *dda)
 {
-	if (dda->hit_axis == X_AXIS)
+	if (dda->hit_side == WEST || dda->hit_side == EAST)
 		return (dda->ray_len_to_wall_x - dda->ray_len_btw_x_axis);
 	else
 		return (dda->ray_len_to_wall_y - dda->ray_len_btw_y_axis);
