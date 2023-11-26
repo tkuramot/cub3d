@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/26 03:15:12 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/26 15:12:12 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	allocate_texture_data(t_mlx_data *mlx_data,
 			&texture->line_length,
 			&texture->endian);
 }
+
 static void	load_texture_data(t_mlx_data *mlx_data,
 							t_texture_path *texture_path)
 {
