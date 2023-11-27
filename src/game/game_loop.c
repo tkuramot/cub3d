@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/27 00:39:52 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/27 09:52:46 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,20 @@ void	render_textured_wall_vertical_line(t_world *world, t_dda *dda, t_texture *t
 	}
 }
 
+t_texture *get_side_texture(t_world *world, t_dda *dda)
+{
+	if (dda->hit_side == NORTH)
+		return (&world->mlx_data.textures[NORTH]);
+	else if (dda->hit_side == SOUTH)
+		return (&world->mlx_data.textures[SOUTH]);
+	else if (dda->hit_side == WEST)
+		return (&world->mlx_data.textures[WEST]);
+	else if (dda->hit_side == EAST)
+		return (&world->mlx_data.textures[EAST]);
+	else
+		return (NULL);
+}
+
 int	game_loop(t_world *world)
 {
 	t_dda	dda;
@@ -125,7 +139,7 @@ int	game_loop(t_world *world)
 		prepare_dda(world, &dda, window_x);
 		perform_dda(world, &dda);
 		dist_camera_plane_to_wall = get_dist_camera_plane_to_wall(&dda);
-		render_textured_wall_vertical_line(world, &dda, &world->mlx_data.textures[0], dist_camera_plane_to_wall, window_x);
+		render_textured_wall_vertical_line(world, &dda, get_side_texture(world, &dda), dist_camera_plane_to_wall, window_x);
 		window_x++;
 	}
 	frame_buffer_apply(&world->mlx_data);
