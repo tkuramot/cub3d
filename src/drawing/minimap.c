@@ -6,7 +6,7 @@
 /*   By: tokazaki <tokazaki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 00:26:10 by tokazaki          #+#    #+#             */
-/*   Updated: 2023/11/28 01:08:59 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/28 01:30:33 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ void	render_wall_brock(t_world *world, int col, int row)
 	x = MINIMAP_PLAYER_POS - world->player.precise_pos.x * MINIMAP_PIXEL_SIZE;
 	y = MINIMAP_PLAYER_POS - world->player.precise_pos.y * MINIMAP_PIXEL_SIZE;
 	i = 0;
-	while (i < 5)
+	while (i < MINIMAP_WALL_BLOCK_SIZE)
 	{
 		j = 0;
-		while (j < 5)
+		while (j < MINIMAP_WALL_BLOCK_SIZE)
 		{
 			if (is_render_mini_map(col + x + i, row + y + j, \
 						MINIMAP_PLAYER_POS, MINIMAP_RADIUS_SIZE) == true)
@@ -47,9 +47,9 @@ void	render_wall_brock(t_world *world, int col, int row)
 				my_mlx_pixel_put(&world->mlx_data.frame_buffer, \
 					col + x + i, row + y + j, 0xFFFFFF);
 			}
-			i++;
+			j++;
 		}
-		j++;
+		i++;
 	}
 }
 

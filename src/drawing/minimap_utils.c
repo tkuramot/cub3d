@@ -6,7 +6,7 @@
 /*   By: tokazaki <tokazaki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 01:04:48 by tokazaki          #+#    #+#             */
-/*   Updated: 2023/11/28 01:08:04 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/28 01:27:27 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ bool	is_render_mini_map(int x, int y, int center, int radius)
 {
 	int	distance_squared;
 
+	if (x < 0 || y < 0)
+		return (false);
 	distance_squared = (x - center) * (x - center) \
 					+ (y - center) * (y - center);
 	if (distance_squared <= radius * radius)
