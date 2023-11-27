@@ -1,7 +1,7 @@
-WE ./texture/player1.xpm
-NO ./texture/player1.xpm
-SO ./texture/player1.xpm
-EA ./texture/player1.xpm
+WE ./texture/neko.xpm
+NO ./texture/tori.xpm
+SO ./texture/risu.xpm
+EA ./texture/kirin.xpm
 
 F 221,238,255
 C 170,187,238
