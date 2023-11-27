@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/26 01:35:26 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/26 11:57:49 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <utils.h>
+#include <stdbool.h>
 
 void	move_forward(t_world *world);
 void	move_rightward(t_world *world);
@@ -71,21 +72,25 @@ void translucent_my_mlx_pixel_put(t_frame_buffer *frame_buffer,
 
     // 新しい色を既存の色に対して重みづけして混ぜる
     int alpha = 200;  // 重みづけの係数 (0から255の範囲で調整可能)
-    int new_red = (color >> 16) & 0xFF;
-    int new_green = (color >> 8) & 0xFF;
-    int new_blue = color & 0xFF;
+//    int new_red = (color >> 16) & 0xFF;
+//    int new_green = (color >> 8) & 0xFF;
+//    int new_blue = color & 0xFF;
+//
+//    int existing_red = (*existing_color >> 16) & 0xFF;
+//    int existing_green = (*existing_color >> 8) & 0xFF;
+//    int existing_blue = (*existing_color) & 0xFF;
+//
+//    // 新しい色を既存の色に対して重みづけして混ぜる
+//    int blended_red = (existing_red * (255 - alpha) + new_red * alpha) / 255;
+//    int blended_green = (existing_green * (255 - alpha) + new_green * alpha) / 255;
+//    int blended_blue = (existing_blue * (255 - alpha) + new_blue * alpha) / 255;
+//    // ブレンディングされたRGB成分をセット
+//    *existing_color = (blended_red << 16) | (blended_green << 8) | blended_blue | (255 << 24);  // アルファは不透明として設定
 
-    int existing_red = (*existing_color >> 16) & 0xFF;
-    int existing_green = (*existing_color >> 8) & 0xFF;
-    int existing_blue = (*existing_color) & 0xFF;
-
-    // 新しい色を既存の色に対して重みづけして混ぜる
-    int blended_red = (existing_red * (255 - alpha) + new_red * alpha) / 255;
-    int blended_green = (existing_green * (255 - alpha) + new_green * alpha) / 255;
-    int blended_blue = (existing_blue * (255 - alpha) + new_blue * alpha) / 255;
-
-    // ブレンディングされたRGB成分をセット
-    *existing_color = (blended_red << 16) | (blended_green << 8) | blended_blue | (255 << 24);  // アルファは不透明として設定
+	*existing_color = \
+		(((*existing_color & 0xFF00FF) * (255 - alpha) + (color & 0xFF00FF) * alpha) / 255) +
+		((((*existing_color >> 8) & 0xFF) * (255 - alpha) + ((color >> 8) & 0xFF) * alpha) / 255 << 8) +
+		(((*existing_color >> 16) * (255 - alpha) + (color >> 16) * alpha) / 255 << 16);
 }
 
 #include <math.h>
@@ -114,6 +119,7 @@ void	render_wall_brock(t_world *world, int i, int j)
 
 	x = (world->width - world->player.precise_pos.x) * 10;
 	y = (world->height - world->player.precise_pos.y) * 10;
+
 	k = 12;
 	while (k < 17)
 	{
@@ -122,7 +128,7 @@ void	render_wall_brock(t_world *world, int i, int j)
 		{
 			if (0 < i + k + x - 100 && 0 < j + l + y -100)
 			{
-				translucent_my_mlx_pixel_put(&world->mlx_data.frame_buffer, i + k + x - 100, j + l + y - 100, 0xFFFFFF);
+				my_mlx_pixel_put(&world->mlx_data.frame_buffer, i + k + x - 100, j + l + y - 100, 0xFFFFFF);
 			}
 			l++;
 		}
@@ -174,6 +180,7 @@ void	render_map_base(t_world *world)
 
 	x = (world->width - world->player.precise_pos.x) * 10;
 	y = (world->height - world->player.precise_pos.y) * 10;
+
 	i = 5;
 	while (i < world->width * 10 + 15)
 	{
