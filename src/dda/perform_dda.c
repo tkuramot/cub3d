@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 00:17:09 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/26 15:46:29 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:28:14 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ void	perform_dda(t_world *world, t_dda *dda)
 	}
 }
 
-double	get_dist_camera_plane_to_wall(t_dda *dda)
+void	calculate_dist_camera_plane_to_wall(t_dda *dda)
 {
 	if (dda->hit_side == WEST || dda->hit_side == EAST)
-		return (dda->ray_len_to_wall_x - dda->ray_len_btw_x_axis);
+		dda->dist_camera_plane_to_wall = dda->ray_len_to_wall_x - dda->ray_len_btw_x_axis;
 	else
-		return (dda->ray_len_to_wall_y - dda->ray_len_btw_y_axis);
+		dda->dist_camera_plane_to_wall = dda->ray_len_to_wall_y - dda->ray_len_btw_y_axis;
 }

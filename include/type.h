@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 22:12:24 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/26 23:21:52 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:27:07 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_frame_buffer	t_frame_buffer;
 typedef struct s_texture_path	t_texture_path;
 typedef struct s_texture		t_texture;
 typedef struct s_mlx_data		t_mlx_data;
+typedef struct s_wall_line		t_wall_line;
 typedef struct s_dda			t_dda;
 typedef struct s_player			t_player;
 typedef struct s_key_press		t_key_press;
@@ -90,6 +91,18 @@ struct s_dda
 	double		ray_len_btw_y_axis;
 	bool		did_hit_wall;
 	t_direction	hit_side;
+	double		dist_camera_plane_to_wall;
+};
+
+struct s_wall_line
+{
+	int		texture_x;
+	int		texture_y;
+	double	temp_texture_y;
+	double	step;
+	int		line_height;
+	int		line_start;
+	int		line_end;
 };
 
 struct s_player

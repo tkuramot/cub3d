@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 01:48:25 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/27 00:30:50 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:17:26 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,16 @@ void	my_mlx_pixel_put(t_frame_buffer *frame_buffer,
 		+ (y * frame_buffer->line_length
 			+ x * (frame_buffer->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
+}
+
+unsigned int	extract_color_from_texture(t_texture *texture, int y, int x)
+{
+	char	*dst;
+
+	dst = texture->addr
+		+ (y * texture->line_length
+			+ x * (texture->bits_per_pixel / 8));
+	return (*(unsigned int *)dst);
 }
 
 // Top-left is the origin
@@ -44,33 +54,4 @@ void	draw_square(t_mlx_data *mlx_data, t_vec2i start, t_vec2i end, int color)
 		}
 		y++;
 	}
-}
-
-void	render_wall_vertical_line(t_mlx_data *mlx_data,
-			int x, int line_height, int color)
-{
-	int	line_start;
-	int	line_end;
-
-	line_start = -line_height / 2 + WINDOW_HEIGHT / 2;
-	if (line_start < 0)
-		line_start = 0;
-	line_end = line_height / 2 + WINDOW_HEIGHT / 2;
-	if (line_end >= WINDOW_HEIGHT)
-		line_end = WINDOW_HEIGHT - 1;
-	draw_square(mlx_data,
-		(t_vec2i){x, line_start}, (t_vec2i){x, line_end}, color);
-}
-
-void	render_floor(t_mlx_data *mlx_data, int color)
-{
-	draw_square(mlx_data,
-		(t_vec2i){0, 0}, (t_vec2i){WINDOW_WIDTH, WINDOW_HEIGHT / 2}, color);
-}
-
-void	render_ceiling(t_mlx_data *mlx_data, int color)
-{
-	draw_square(mlx_data,
-		(t_vec2i){0, WINDOW_HEIGHT / 2},
-		(t_vec2i){WINDOW_WIDTH, WINDOW_HEIGHT - 1}, color);
 }
