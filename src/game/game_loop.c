@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/28 01:13:20 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/28 10:26:46 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@
 #include "libft.h"
 #include "mlx.h"
 #include "type.h"
-#include <stdint.h>
 #include <stdio.h>
 #include <utils.h>
-#include <stdbool.h>
 
 void	move_forward(t_world *world);
 void	move_rightward(t_world *world);

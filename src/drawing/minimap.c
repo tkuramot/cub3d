@@ -6,27 +6,15 @@
 /*   By: tokazaki <tokazaki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 00:26:10 by tokazaki          #+#    #+#             */
-/*   Updated: 2023/11/28 01:30:33 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/28 10:59:54 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constant.h"
-#include "dda.h"
 #include "drawing.h"
-#include "libft.h"
-#include "mlx.h"
-#include "type.h"
-#include <stdint.h>
 #include <stdio.h>
-#include <utils.h>
-#include <stdbool.h>
 
-bool	is_render_mini_map(int x, int y, int center, int radius);
-void	translucent_my_mlx_pixel_put(t_frame_buffer *frame_buffer, \
-								int x, int y, int color);
-
-//minimapに壁ブロックの描画
-void	render_wall_brock(t_world *world, int col, int row)
+static void	render_wall_brock(t_world *world, int col, int row)
 {
 	int	i;
 	int	j;
@@ -53,8 +41,7 @@ void	render_wall_brock(t_world *world, int col, int row)
 	}
 }
 
-//どのに壁があるか確認する
-void	render_blocks(t_world *world)
+static void	check_blocks(t_world *world)
 {
 	int	row;
 	int	col;
@@ -74,8 +61,7 @@ void	render_blocks(t_world *world)
 	}
 }
 
-//mapのベースを描画する
-void	render_map_base(t_world *world)
+static void	render_map_base(t_world *world)
 {
 	int	i;
 	int	j;
@@ -99,16 +85,15 @@ void	render_map_base(t_world *world)
 	}
 }
 
-//プレイヤーの場所の表示
-void	render_player(t_world *world)
+static void	render_player(t_world *world)
 {
 	int	i;
 	int	j;
 
-	i = -6;
-	while (i < -1)
+	i = -MINIMAP_WALL_BLOCK_SIZE;
+	while (i < 0)
 	{
-		j = -5;
+		j = -MINIMAP_WALL_BLOCK_SIZE;
 		while (j < 0)
 		{
 			my_mlx_pixel_put(&world->mlx_data.frame_buffer, \
@@ -122,6 +107,6 @@ void	render_player(t_world *world)
 void	render_minimap(t_world *world)
 {
 	render_map_base(world);
-	render_blocks(world);
+	check_blocks(world);
 	render_player(world);
 }

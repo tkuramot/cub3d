@@ -6,19 +6,11 @@
 /*   By: tokazaki <tokazaki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 01:04:48 by tokazaki          #+#    #+#             */
-/*   Updated: 2023/11/28 01:27:27 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/28 10:42:04 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "constant.h"
-#include "dda.h"
-#include "drawing.h"
-#include "libft.h"
-#include "mlx.h"
 #include "type.h"
-#include <stdint.h>
-#include <stdio.h>
-#include <utils.h>
 #include <stdbool.h>
 
 bool	is_render_mini_map(int x, int y, int center, int radius)
@@ -35,7 +27,6 @@ bool	is_render_mini_map(int x, int y, int center, int radius)
 		return (false);
 }
 
-//色を透過して表示する方法
 void	translucent_my_mlx_pixel_put(t_frame_buffer *frame_buffer, \
 								int x, int y, int color)
 {
