@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 00:17:09 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/28 17:36:47 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:44:41 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	perform_dda(t_world *world, t_dda *dda)
 			dda->ray_len_to_wall_y += dda->ray_len_btw_y_axis;
 			dda->grid_pos.y += dda->next_step_dir.y;
 			if (dda->ray_dir.y < 0)
-				dda->hit_side = NORTH;
-			else
 				dda->hit_side = SOUTH;
+			else
+				dda->hit_side = NORTH;
 		}
 		if (world->map[dda->grid_pos.y][dda->grid_pos.x]
 			== WALL)
