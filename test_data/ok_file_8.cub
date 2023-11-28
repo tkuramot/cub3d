@@ -1,7 +1,7 @@
 WE ./texture/lion.xpm
 NO ./texture/rabbit.xpm
 SO ./texture/cat.xpm
-EA ./texture/player1.xpm
+EA ./texture/risu.xpm
 
 F 221,238,255
 C 170,187,238

@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/27 09:52:46 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:00:59 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,8 @@ void	render_textured_wall_vertical_line(t_world *world, t_dda *dda, t_texture *t
 	int		line_end;
 	unsigned int	color;
 
-	texture_x = (int)(wall_x * texture->width);
-	if (dda->hit_side == WEST)
-		texture_x = texture->width - texture_x - 1;
-	if (dda->hit_side == NORTH)
+	texture_x = (int)(wall_x * (double)texture->width);
+	if (dda->hit_side == WEST || dda->hit_side == NORTH)
 		texture_x = texture->width - texture_x - 1;
 	line_height = (int)(WINDOW_HEIGHT / dist_camera_plane_to_wall);
 	line_start = -line_height / 2 + WINDOW_HEIGHT / 2;
@@ -98,11 +96,10 @@ void	render_textured_wall_vertical_line(t_world *world, t_dda *dda, t_texture *t
 		line_end = WINDOW_HEIGHT - 1;
 	step = 1.0 * texture->height / line_height;
 	window_y = line_start;
-	// TODO Zero ?
 	temp_texture_y = (int)(line_start - WINDOW_HEIGHT / 2 + line_height / 2) * step;
 	while (window_y < line_end)
 	{
-		texture_y = (int)(temp_texture_y) & (texture->height - 1);
+		texture_y = (int)fmod(temp_texture_y, texture->height - 1);
 		temp_texture_y += step;
 		color = extract_color_from_texture(texture, texture_y, texture_x);
 		my_mlx_pixel_put(&world->mlx_data.frame_buffer, window_y, window_x, color);
