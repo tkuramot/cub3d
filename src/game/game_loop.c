@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/28 14:32:18 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:51:54 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,10 @@ int	game_loop(t_world *world)
 		perform_dda(world, &dda);
 		calculate_dist_camera_plane_to_wall(&dda);
 		calculate_line(&line, &dda);
-		calculate_texture_position(&line, world, &dda, get_side_texture(world, &dda));
-		render_textured_wall_vertical_line(world, get_side_texture(world, &dda), &line, window_x);
+		calculate_texture_position(&line, world, &dda,
+			get_side_texture(world, &dda));
+		render_textured_wall_vertical_line(world,
+			get_side_texture(world, &dda), &line, window_x);
 		window_x++;
 	}
 	frame_buffer_apply(&world->mlx_data);
