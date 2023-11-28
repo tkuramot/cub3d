@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/28 17:51:54 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:58:29 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int	game_loop(t_world *world)
 			get_side_texture(world, &dda), &line, window_x);
 		window_x++;
 	}
+	render_minimap(world);
 	frame_buffer_apply(&world->mlx_data);
 	return (0);
 }

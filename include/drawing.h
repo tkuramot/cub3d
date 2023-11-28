@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/28 17:36:15 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:38:41 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,9 @@ void			calculate_texture_position(t_wall_line *line, t_world *world,
 					t_dda *dda, t_texture *texture);
 void			render_textured_wall_vertical_line(t_world *world,
 					t_texture *texture, t_wall_line *line, int window_x);
+void			render_minimap(t_world *world);
+bool			is_in_minimap(int x, int y, int center, int radius);
+void			translucent_my_mlx_pixel_put(t_frame_buffer *frame_buffer, \
+								int x, int y, int color);
 
 #endif

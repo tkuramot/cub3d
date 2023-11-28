@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:18:10 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/28 17:51:02 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:36:47 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	render_textured_wall_vertical_line(t_world *world, t_texture *texture,
 		color = extract_color_from_texture(texture,
 				line->texture_y, line->texture_x);
 		my_mlx_pixel_put(&world->mlx_data.frame_buffer,
-			window_y, window_x, color);
+			window_x, window_y, color);
 		window_y++;
 	}
 }

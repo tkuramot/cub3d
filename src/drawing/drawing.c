@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 01:48:25 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/28 14:17:26 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:36:23 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdio.h>
 
 void	my_mlx_pixel_put(t_frame_buffer *frame_buffer,
-				int y, int x, int color)
+				int x, int y, int color)
 {
 	char	*dst;
 
@@ -49,7 +49,7 @@ void	draw_square(t_mlx_data *mlx_data, t_vec2i start, t_vec2i end, int color)
 		x = start.x;
 		while (x <= end.x)
 		{
-			my_mlx_pixel_put(&mlx_data->frame_buffer, y, x, color);
+			my_mlx_pixel_put(&mlx_data->frame_buffer, x, y, color);
 			x++;
 		}
 		y++;
