@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 00:57:43 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/19 20:16:06 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/28 00:31:26 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ static void	assign_player_dir(t_world *world)
 	}
 	else if (direction == 'S')
 	{
-		world->player.dir.x = -1;
-		world->player.camera_plane.y = -0.66;
+		world->player.dir.y = 1;
+		world->player.camera_plane.x = -0.66;
 	}
 	else if (direction == 'W')
 	{
-		world->player.dir.y = 1;
-		world->player.camera_plane.x = -0.66;
+		world->player.dir.x = -1;
+		world->player.camera_plane.y = -0.66;
 	}
 	else if (direction == 'E')
 	{
