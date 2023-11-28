@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/20 01:33:50 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/28 10:39:22 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,12 @@ void	render_floor(t_mlx_data *mlx_data, int color);
 void	render_ceiling(t_mlx_data *mlx_data, int color);
 void	render_wall_vertical_line(t_mlx_data *mlx_data,
 			int x, int line_height, int color);
+
+void	render_minimap(t_world *world);
+void	my_mlx_pixel_put(t_frame_buffer *frame_buffer, int x, int y, int color);
+
+bool	is_in_minimap(int x, int y, int center, int radius);
+void	translucent_my_mlx_pixel_put(t_frame_buffer *frame_buffer, \
+								int x, int y, int color);
 
 #endif

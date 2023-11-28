@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_utils.c                                       :+:      :+:    :+:   */
+/*   drawing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 01:48:25 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/20 01:37:41 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/25 01:11:44 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "type.h"
 #include <stdio.h>
 
-static void	my_mlx_pixel_put(t_frame_buffer *frame_buffer,
+void	my_mlx_pixel_put(t_frame_buffer *frame_buffer,
 				int x, int y, int color)
 {
 	char	*dst;
