@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/28 00:27:25 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:37:48 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@
 # define MINIMAP_RADIUS_SIZE 100
 # define MINIMAP_PIXEL_SIZE 10
 # define MINIMAP_MARGIN 3
-# define MINIMAP_WALL_BLOCK_SIZE 5
+# define MINIMAP_WALL_BLOCK_SIZE 7
+# define MINIMAP_TRANSPARENCY 200
 
 typedef enum e_direction	t_direction;
 typedef enum e_axis			t_axis;
@@ -86,6 +87,14 @@ enum e_event_mask
 {
 	MASK_NO_EVENT = 0LL,
 	MASK_KEY_PRESS = 1LL << 0
+};
+
+enum e_color {
+	WHITE = 0xffffff,
+	YELLOW = 0xf7e78e,
+	BLACK = 0x0,
+	ORANGE = 0xf39939,
+	GRAY = 0x77787B
 };
 
 #endif

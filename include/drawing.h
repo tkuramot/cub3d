@@ -29,7 +29,7 @@ void	render_wall_vertical_line(t_mlx_data *mlx_data,
 void	render_minimap(t_world *world);
 void	my_mlx_pixel_put(t_frame_buffer *frame_buffer, int x, int y, int color);
 
-bool	is_render_mini_map(int x, int y, int center, int radius);
+bool	is_in_minimap(int x, int y, int center, int radius);
 void	translucent_my_mlx_pixel_put(t_frame_buffer *frame_buffer, \
 								int x, int y, int color);
 
