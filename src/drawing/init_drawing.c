@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/29 10:34:18 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/29 19:45:07 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,18 @@ static void	load_texture_data(t_mlx_data *mlx_data,
 void	init_mlx_data(t_world *world)
 {
 	world->mlx_data.mlx = mlx_init();
+	if (!world->mlx_data.mlx)
+	{
+		errno = 0;
+		error_exit_msg("Failed to load texture data\n");
+	}
 	world->mlx_data.mlx_win = mlx_new_window(world->mlx_data.mlx,
 			WINDOW_WIDTH, WINDOW_HEIGHT, "cub3D");
+	if (!world->mlx_data.mlx_win)
+	{
+		errno = 0;
+		error_exit_msg("Failed to load texture data\n");
+	}
 	frame_buffer_allocate(&world->mlx_data);
 	load_texture_data(&world->mlx_data, &world->texture_path);
 }
