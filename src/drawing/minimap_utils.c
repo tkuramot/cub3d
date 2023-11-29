@@ -6,7 +6,7 @@
 /*   By: tokazaki <tokazaki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 01:04:48 by tokazaki          #+#    #+#             */
-/*   Updated: 2023/11/28 13:39:11 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/29 15:26:06 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	translucent_my_mlx_pixel_put(t_frame_buffer *frame_buffer, \
 	existing_color = (unsigned int *)dst;
 	alpha = MINIMAP_TRANSPARENCY;
 	*existing_color = \
-		(((*existing_color & 0xFF00FF) * (255 - alpha) + \
-			(color & 0xFF00FF) * alpha) / 255) + \
+		(((*existing_color & 0xFF) * (255 - alpha) + \
+			(color & 0xFF) * alpha) / 255) + \
 		((((*existing_color >> 8) & 0xFF) * (255 - alpha) + \
 			((color >> 8) & 0xFF) * alpha) / 255 << 8) + \
 		(((*existing_color >> 16) * (255 - alpha) + \

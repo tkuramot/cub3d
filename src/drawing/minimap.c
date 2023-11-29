@@ -6,7 +6,7 @@
 /*   By: tokazaki <tokazaki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 00:26:10 by tokazaki          #+#    #+#             */
-/*   Updated: 2023/11/28 17:51:01 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/29 15:37:38 by tokazaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,10 @@ static void	render_map_base(t_world *world)
 			if (is_in_minimap(i, j, \
 						MINIMAP_PLAYER_POS, MINIMAP_RADIUS_SIZE) == true)
 				translucent_my_mlx_pixel_put(&world->mlx_data.frame_buffer, \
-								i, j, GRAY);
+								i, j, YELLOW);
 			else if (is_in_minimap(i, j, MINIMAP_PLAYER_POS, \
 						MINIMAP_RADIUS_SIZE + MINIMAP_MARGIN) == true)
-				my_mlx_pixel_put(&world->mlx_data.frame_buffer, i, j, WHITE);
+				my_mlx_pixel_put(&world->mlx_data.frame_buffer, i, j, ORANGE);
 			j++;
 		}
 		i++;
