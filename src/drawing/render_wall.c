@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:18:10 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/28 19:36:47 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/29 14:37:11 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,6 @@
 #include "type.h"
 #include <stdlib.h>
 #include <math.h>
-
-void	render_wall_vertical_line(t_mlx_data *mlx_data,
-			int x, int line_height, int color)
-{
-	int	line_start;
-	int	line_end;
-
-	line_start = -line_height / 2 + WINDOW_HEIGHT / 2;
-	if (line_start < 0)
-		line_start = 0;
-	line_end = line_height / 2 + WINDOW_HEIGHT / 2;
-	if (line_end >= WINDOW_HEIGHT)
-		line_end = WINDOW_HEIGHT - 1;
-	draw_square(mlx_data,
-		(t_vec2i){x, line_start}, (t_vec2i){x, line_end}, color);
-}
 
 void	calculate_line(t_wall_line *line, t_dda *dda)
 {
