@@ -9,6 +9,8 @@ NAME    = cub3D
 SRCDIR  = src
 SRCS    = \
 	src/drawing/frame_buffer.c \
+	src/drawing/render_floor_and_ceiling.c \
+	src/drawing/render_wall.c \
 	src/drawing/minimap.c \
 	src/drawing/minimap_utils.c \
 	src/drawing/init_drawing.c \

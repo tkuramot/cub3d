@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/22 02:34:02 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/26 03:15:41 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int argc, char *argv[])
 		error_exit_msg("Only one argument is allowed");
 	get_config(argv, &world);
 	init_player(&world);
-	init_mlx_data(&world.mlx_data);
+	init_mlx_data(&world);
 	mlx_hook(world.mlx_data.mlx_win, ON_KEYDOWN,
 		1LL << 0, key_hook_down, &world);
 	mlx_hook(world.mlx_data.mlx_win, ON_KEYUP,

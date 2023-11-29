@@ -6,7 +6,7 @@
 /*   By: tokazaki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:08:06 by tokazaki          #+#    #+#             */
-/*   Updated: 2023/11/22 02:36:15 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/26 03:07:25 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ static void	set_texture_to_world(char *line, t_world *world)
 
 	direction = check_direction(line);
 	line = skip_space(&line[2]);
-	if (direction == NORTH && world->texture.north_texture == NULL)
-		world->texture.north_texture = ft_strdup(line);
-	else if (direction == SOUTH && world->texture.south_texture == NULL)
-		world->texture.south_texture = ft_strdup(line);
-	else if (direction == WEST && world->texture.west_texture == NULL)
-		world->texture.west_texture = ft_strdup(line);
-	else if (direction == EAST && world->texture.east_texture == NULL)
-		world->texture.east_texture = ft_strdup(line);
+	if (direction == NORTH && world->texture_path.north_texture == NULL)
+		world->texture_path.north_texture = ft_strdup(line);
+	else if (direction == SOUTH && world->texture_path.south_texture == NULL)
+		world->texture_path.south_texture = ft_strdup(line);
+	else if (direction == WEST && world->texture_path.west_texture == NULL)
+		world->texture_path.west_texture = ft_strdup(line);
+	else if (direction == EAST && world->texture_path.east_texture == NULL)
+		world->texture_path.east_texture = ft_strdup(line);
 	else
 		error_exit_msg("Please put the correct direction texture");
 	if (errno != 0)

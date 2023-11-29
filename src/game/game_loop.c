@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/28 10:26:46 by tokazaki         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:58:29 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "libft.h"
 #include "mlx.h"
 #include "type.h"
+#include <math.h>
 #include <stdio.h>
 #include <utils.h>
 
@@ -55,23 +56,25 @@ void	key_handler(t_world *world)
 
 int	game_loop(t_world *world)
 {
-	t_dda	dda;
-	int		x;
-	double	dist_camera_plane_to_wall;
-	int		line_height;
+	t_dda		dda;
+	int			window_x;
+	t_wall_line	line;
 
 	key_handler(world);
 	render_floor(&world->mlx_data, world->floor_color);
 	render_ceiling(&world->mlx_data, world->ceiling_color);
-	x = 0;
-	while (x < WINDOW_WIDTH)
+	window_x = 0;
+	while (window_x < WINDOW_WIDTH)
 	{
-		prepare_dda(world, &dda, x);
+		prepare_dda(world, &dda, window_x);
 		perform_dda(world, &dda);
-		dist_camera_plane_to_wall = get_dist_camera_plane_to_wall(&dda);
-		line_height = (int)(WINDOW_HEIGHT / dist_camera_plane_to_wall);
-		render_wall_vertical_line(&world->mlx_data, x, line_height, 0X00FF0000);
-		x++;
+		calculate_dist_camera_plane_to_wall(&dda);
+		calculate_line(&line, &dda);
+		calculate_texture_position(&line, world, &dda,
+			get_side_texture(world, &dda));
+		render_textured_wall_vertical_line(world,
+			get_side_texture(world, &dda), &line, window_x);
+		window_x++;
 	}
 	render_minimap(world);
 	frame_buffer_apply(&world->mlx_data);
