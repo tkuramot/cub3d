@@ -6,7 +6,7 @@
 /*   By: tokazaki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:08:38 by tokazaki          #+#    #+#             */
-/*   Updated: 2023/11/29 20:15:17 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/29 20:19:11 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,21 @@ static void	read_map(int fd, t_world *world, t_list **lst)
 	line = read_file(fd);
 	if (line == NULL)
 		error_exit_msg("No map in file");
-	if (ft_strlen(line) > MAX_MAP_SIZE)
-		error_exit_msg("Too many columns");
 	del_newline_code(line);
 	*lst = ft_lstnew(line);
 	line_count = 0;
 	while (1)
 	{
+		if (ft_strlen(line) > MAX_MAP_SIZE)
+			error_exit_msg("Too many columns");
 		line = get_next_line(fd);
 		if (errno != 0)
 			error_exit_msg("malloc error");
 		if (line == NULL)
 			break ;
-		if (ft_strlen(line) > MAX_MAP_SIZE)
-			error_exit_msg("Too many columns");
 		del_newline_code(line);
 		ft_lstadd_back(lst, ft_lstnew(line));
-		line_count++;
-		if (line_count > MAX_MAP_SIZE)
+		if (++line_count > MAX_MAP_SIZE)
 			error_exit_msg("Too many rows");
 	}
 	(void)world;
