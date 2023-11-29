@@ -6,11 +6,12 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/26 15:12:12 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/29 10:34:18 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constant.h"
+#include "cub3d.h"
 #include "drawing.h"
 #include "mlx.h"
 #include "type.h"
@@ -23,7 +24,10 @@ static void	allocate_texture_data(t_mlx_data *mlx_data,
 	texture->img = mlx_xpm_file_to_image(mlx_data->mlx,
 			texture_path, &texture->width, &texture->height);
 	if (!texture->img)
+	{
+		errno = 0;
 		error_exit_msg("Failed to load texture data\n");
+	}
 	texture->addr = mlx_get_data_addr(texture->img, &texture->bits_per_pixel,
 			&texture->line_length,
 			&texture->endian);
