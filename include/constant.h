@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 20:37:11 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/28 17:57:48 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/11/29 20:01:13 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
+# define MAX_MAP_SIZE 1000
 # define INFINITY INT_MAX
 # define MOVEMENT_SPEED 0.1
 # define ROTATE_KEY_SPEED 0.05
