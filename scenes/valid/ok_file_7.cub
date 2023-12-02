@@ -1,7 +1,7 @@
-WE ./path_to_the_west_texture
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-EA ./path_to_the_east_texture
+NO ./texture/neko.xpm
+SO ./texture/neko.xpm
+WE ./texture/neko.xpm
+EA ./texture/neko.xpm
 
 F 0,255,255
 C 128,0,128

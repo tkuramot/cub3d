@@ -1,12 +1,12 @@
-NO                                                  ./path_to_the_north_texture
+NO                                                  ./texture/tori.xpm
 
 
 
 
 
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+SO ./texture/player1.xpm
+WE ./texture/tiger.xpm
+EA ./texture/tiger.xpm
 
 
 

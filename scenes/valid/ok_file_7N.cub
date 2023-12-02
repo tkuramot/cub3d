@@ -1,7 +1,7 @@
-WE ./path_to_the_west_texture
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-EA ./path_to_the_east_texture
+NO ./texture/bluebird_fired_text.xpm
+SO ./texture/cat.xpm
+WE ./texture/neko.xpm
+EA ./texture/tori.xpm
 
 F 220,99,0
 C 225,30,0

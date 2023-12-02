@@ -1,7 +1,7 @@
-WE ./texture/lion.xpm
-NO ./texture/rabbit.xpm
+NO ./texture/bluebird_fired_text.xpm
 SO ./texture/cat.xpm
-EA ./texture/risu.xpm
+WE ./texture/neko.xpm
+EA ./texture/tori.xpm
 
 F 221,238,255
 C 170,187,238
