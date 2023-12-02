@@ -6,7 +6,7 @@
 /*   By: tkuramot <tkuramot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:18:10 by tkuramot          #+#    #+#             */
-/*   Updated: 2023/11/29 14:37:11 by tkuramot         ###   ########.fr       */
+/*   Updated: 2023/12/02 14:11:15 by tkuramot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	calculate_texture_position(t_wall_line *line, t_world *world,
 			+ dda->dist_camera_plane_to_wall * dda->ray_dir.x;
 	wall_x -= floor(wall_x);
 	line->texture_x = (int)(wall_x * (double)texture->width);
-	if (dda->hit_side == WEST || dda->hit_side == NORTH)
+	if (dda->hit_side == NORTH || dda->hit_side == EAST)
 		line->texture_x = texture->width - line->texture_x - 1;
 	line->step = 1.0 * texture->height / line->line_height;
 	line->temp_texture_y = (int)(line->line_start - WINDOW_HEIGHT / 2
