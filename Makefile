@@ -85,4 +85,8 @@ submodule:
 cfile:
 	find . -name "*.c" -not -path "./lib/*" | sed 's/\.\///g' | awk '{print "\t"$$0" \\"}' | sed '$$s/ \\//'
 
+run:
+	make -j
+	./cub3D scenes/valid/sample.cub
+
 -include $(DEPENDS)
